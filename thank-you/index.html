@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Your Starter Kit Is On The Way — Creator Launchpad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --charcoal:   #1f2d33;
+      --panel:      #2a3c42;
+      --teal-light: #74bbb7;
+      --teal:       #3d7775;
+      --teal-dark:  #2f5e5c;
+      --off-white:  #f7f8f8;
+      --muted-dark: #b0bdc1;
+      --border:     #d9e5e6;
+      --white:      #ffffff;
+      --ink:        var(--charcoal);
+      --ink-soft:   #34454c;
+      --ink-muted:  #5f7076;
+      --display: 'Futura', 'Futura PT', 'Jost', 'Century Gothic', sans-serif;
+      --body:    Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    }
+
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      background: var(--white);
+      color: var(--ink-soft);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: inherit; }
+
+    .topbar { background: var(--charcoal); display: flex; justify-content: center; padding: 10px 16px; }
+    .topbar img { width: 64px; height: 64px; }
+
+    main {
+      flex: 1;
+      max-width: 620px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 56px 16px 64px;
+      text-align: center;
+    }
+
+    .check {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .check svg { width: 30px; height: 30px; }
+
+    .label {
+      font-family: var(--display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    h1 {
+      font-family: var(--display);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: clamp(30px, 6vw, 48px);
+      line-height: 1.05;
+      color: var(--ink);
+      margin: 10px 0 14px;
+    }
+    .sub { font-size: 18px; color: var(--ink-muted); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 26px;
+      font-family: var(--display);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--white);
+      background: var(--teal);
+      border-radius: 8px;
+      padding: 16px 26px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .btn:hover { background: var(--teal-dark); transform: translateY(-1px); }
+    .btn:focus-visible { outline: 3px solid var(--teal-light); outline-offset: 2px; }
+
+    .note { font-size: 14px; color: var(--ink-muted); margin-top: 12px; }
+
+    .next {
+      list-style: none;
+      text-align: left;
+      margin: 40px 0 0;
+      display: grid;
+      gap: 10px;
+    }
+    .next li {
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+    }
+    .next .n { font-family: var(--display); font-weight: 600; color: var(--teal); font-size: 17px; }
+    .next strong { display: block; font-family: var(--display); text-transform: uppercase; color: var(--ink); letter-spacing: 0.02em; }
+    .next span.d { font-size: 14.5px; color: var(--ink-muted); }
+
+    /* Dark card, per the guide: panel/charcoal + off-white + light teal */
+    .challenge {
+      margin-top: 40px;
+      background: var(--charcoal);
+      border-radius: 12px;
+      padding: 28px 24px;
+      text-align: left;
+      color: var(--muted-dark);
+    }
+    .challenge .label { color: var(--teal-light); }
+    .challenge h2 {
+      font-family: var(--display);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 24px;
+      line-height: 1.15;
+      color: var(--off-white);
+      margin: 8px 0 8px;
+    }
+    .challenge p { font-size: 15px; }
+    .challenge .btn {
+      color: var(--charcoal);
+      background: var(--teal-light);
+      margin-top: 18px;
+    }
+    .challenge .btn:hover { background: #8ccac6; }
+
+    footer {
+      background: var(--charcoal);
+      color: var(--muted-dark);
+      text-align: center;
+      padding: 24px 16px 28px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 520px) {
+      .btn { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a href="../"><img src="../cl.svg" alt="Creator Launchpad" width="64" height="64"></a>
+  </header>
+
+  <main>
+    <div class="check" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="label">You're in</div>
+    <h1 id="headline">Your kit is on the way</h1>
+    <p class="sub">We just sent the Creator Starter Kit to your inbox. Don't want to wait? Grab it right now.</p>
+
+    <a class="btn" href="../Creator-Launchpad-Starter-Kit.pdf" download>Download the kit (PDF) &darr;</a>
+    <p class="note">Not seeing the email in a few minutes? Check your promotions or spam folder.</p>
+
+    <ol class="next">
+      <li><span class="n">01</span><div><strong>Start on page 3</strong><span class="d">The First-Post Path gets you from idea to posted video today.</span></div></li>
+      <li><span class="n">02</span><div><strong>Print the checklist</strong><span class="d">Run every video through the one-page posting checklist before you publish.</span></div></li>
+      <li><span class="n">03</span><div><strong>Post, then do the next one</strong><span class="d">Log each post in the 30-post tracker and improve one thing every time.</span></div></li>
+    </ol>
+
+    <section class="challenge">
+      <div class="label">Want help doing it every day?</div>
+      <h2>Start your 30-day challenge</h2>
+      <p>Daily accountability. Weekly calls with coaching and Q&amp;A. Resources and a creator community to help you apply each step and level up your content.</p>
+      <a class="btn" href="https://notmattgraham.com/30/">Start your 30-day challenge &rsaquo;</a>
+    </section>
+  </main>
+
+  <footer>&copy; 2026 Creator Launchpad</footer>
+
+<script>
+  (function () {
+    try {
+      var name = sessionStorage.getItem('kit_first_name');
+      if (name) {
+        document.getElementById('headline').textContent = name + ', your kit is on the way';
+      }
+    } catch (err) {}
+  })();
+</script>
+</body>
+</html>
