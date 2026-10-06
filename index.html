@@ -350,9 +350,9 @@
 
       <!--
         HOW SUBMISSIONS WORK
-        Sign-ups go to MailerLite through the same form as the Challenge
-        Waitlist (account 2346542, embed 2XEk8c), so they join that form's
-        group. Endpoint and field names are set at the bottom of this page.
+        Sign-ups go to the MailerLite "Creator Launch Kit" form (account
+        2346542, form 200539719975568936), which adds them to that form's
+        group. The endpoint is set at the bottom of this page.
       -->
       <form class="form-card" id="kit-form" action="thank-you/" method="get" novalidate>
         <div class="progress" aria-hidden="true">
@@ -419,9 +419,10 @@
 
 <script>
   (function () {
-    // MailerLite form behind the Challenge Waitlist embed (2XEk8c). Posting here
-    // adds the person to that form's group. Leave empty to skip sending.
-    var FORM_ENDPOINT = 'https://assets.mailerlite.com/jsonp/2346542/forms/198773775896937926/subscribe';
+    // MailerLite "Creator Launch Kit" form (embed mlb2-46769664). Submitting
+    // here adds the person to that form's group, which triggers the kit email.
+    // Leave empty to skip sending.
+    var FORM_ENDPOINT = 'https://assets.mailerlite.com/jsonp/2346542/forms/200539719975568936/subscribe';
 
     var form = document.getElementById('kit-form');
     var step1 = document.getElementById('step-1');
