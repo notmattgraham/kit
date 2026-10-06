@@ -1,1055 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The $100 Daily Post Challenge</title>
-<meta name="description" content="Post every day for 30 days and get 110% of your money back. Limited to 100 people. Begins September 15, 2026." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Creator Launch Kit — Creator Launchpad</title>
+  <meta name="description" content="Your brand is ready for liftoff. Get the free Creator Launch Kit that will help you get your personal brand off the ground." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    /* Creator Launchpad palette, light-section pairing: white + charcoal + deep teal */
-    --bg:        #ffffff;   /* white: reading sections */
-    --bg-alt:    #f7f8f8;   /* off-white: alternating sections */
-    --bg-card:   #f7f8f8;
-    --ink:       #1f2d33;   /* charcoal */
-    --ink-soft:  #34454c;
-    --ink-muted: #5f7076;
-    --ink-faint: #8a9ba0;
-    --hairline:  #d9e5e6;   /* border */
-    --accent:    #3d7775;   /* deep teal: buttons and accents on white */
-    --accent-dark: #2f5e5c;
-    --accent-light: #74bbb7; /* light teal: accents on charcoal */
-    --white:     #ffffff;
+    :root {
+      /* Creator Launchpad palette */
+      --charcoal:   #1f2d33;
+      --panel:      #2a3c42;
+      --teal-light: #74bbb7;
+      --teal:       #3d7775;
+      --teal-dark:  #2f5e5c;
+      --off-white:  #f7f8f8;
+      --muted-dark: #b0bdc1;
+      --border:     #d9e5e6;
+      --white:      #ffffff;
 
-    --display: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-    --body:    'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-  }
+      --ink:        var(--charcoal);
+      --ink-soft:   #34454c;
+      --ink-muted:  #5f7076;
 
-  html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+      /* Futura isn't a free web font; Jost is the closest geometric match */
+      --display: 'Futura', 'Futura PT', 'Jost', 'Century Gothic', sans-serif;
+      --body:    Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    }
 
-  body {
-    background: var(--bg);
-    color: var(--ink-soft);
-    font-family: var(--body);
-    font-size: 16px;
-    line-height: 1.6;
-    font-weight: 400;
-  }
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      background: var(--white);
+      color: var(--ink-soft);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
 
-  a { color: inherit; text-decoration: none; }
-  img { max-width: 100%; display: block; }
-
-  /* ── OFFER BAR ── */
-  .offer-bar {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: var(--ink);
-    color: var(--white);
-    padding: 10px 16px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-align: center;
-    font-family: var(--display);
-  }
-  .offer-bar .offer-label {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--accent-light);
-  }
-  .offer-bar .offer-copy { font-size: 13px; font-weight: 500; color: var(--white); opacity: 0.85; }
-  .offer-bar .offer-countdown {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    font-variant-numeric: tabular-nums;
-    background: rgba(255,255,255,0.12);
-    padding: 3px 10px;
-    border-radius: 999px;
-  }
-  @media (max-width: 640px) {
-    .offer-bar { padding: 9px 12px; }
-    .offer-bar .offer-copy { display: none; }
-  }
-
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-  .container-narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-
-  /* ── HERO ── */
-  .hero { padding-top: 56px; padding-bottom: 8px; text-align: center; }
-  .eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 14px;
-    font-family: var(--display);
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 26px;
-  }
-  .eyebrow::before,
-  .eyebrow::after {
-    content: '';
-    width: 26px;
-    height: 3px;
-    background: var(--accent);
-    border-radius: 2px;
-  }
-  h1 {
-    font-family: var(--display);
-    font-size: clamp(34px, 5.6vw, 58px);
-    font-weight: 800;
-    line-height: 1.06;
-    letter-spacing: -0.03em;
-    color: var(--ink);
-    max-width: 780px;
-    margin: 0 auto 18px;
-  }
-  @media (max-width: 480px) {
-    h1 { font-size: 22px; line-height: 1.15; letter-spacing: -0.02em; }
-  }
-  h1 .accent-underline {
-    text-decoration: underline;
-    text-decoration-color: var(--accent);
-    text-decoration-thickness: 4px;
-    text-underline-offset: 6px;
-  }
-  .lead {
-    font-family: var(--body);
-    font-size: clamp(16px, 1.7vw, 19px);
-    line-height: 1.6;
-    color: var(--ink-muted);
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .lead strong { color: var(--ink); font-weight: 600; }
-
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 30px;
-    background: var(--accent);
-    color: var(--white);
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 16px;
-    letter-spacing: -0.01em;
-    padding: 16px 30px;
-    border-radius: 8px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 10px 24px rgba(61,119,117,0.28);
-  }
-  .hero-cta:hover { transform: translateY(-1px); background: var(--accent-dark); box-shadow: 0 14px 30px rgba(61,119,117,0.34); }
-  .hero-cta .arrow { transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
-  .hero-cta:hover .arrow { transform: translateX(3px); }
-
-  .hero-micro {
-    display: block;
-    font-family: var(--display);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink-faint);
-    margin-top: 14px;
-  }
-
-  /* ── VSL ── */
-  .vsl-wrap { max-width: 760px; margin: 32px auto; }
-  .vsl-frame {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #1f2d33;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 24px 48px rgba(31,45,51,0.22);
-  }
-  .vsl-frame video {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-    background: #1f2d33;
-  }
-  /* ── SECTIONS ── */
-  section { padding: 72px 0; border-top: 1px solid var(--hairline); }
-  section.alt { background: var(--bg-alt); }
-  .section-label {
-    font-family: var(--display);
-    font-size: 13px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 800;
-    margin-bottom: 14px;
-    text-align: center;
-  }
-  h2 {
-    font-family: var(--display);
-    font-size: clamp(28px, 4.2vw, 42px);
-    font-weight: 800;
-    letter-spacing: -0.025em;
-    color: var(--ink);
-    line-height: 1.1;
-    text-align: center;
-    max-width: 680px;
-    margin: 0 auto 16px;
-  }
-  .section-sub {
-    font-family: var(--body);
-    font-size: clamp(15px, 1.5vw, 17px);
-    color: var(--ink-muted);
-    text-align: center;
-    max-width: 560px;
-    margin: 0 auto 44px;
-  }
-
-  /* ── COHORT PROOF ── */
-  .cohort-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-  @media (max-width: 900px) { .cohort-grid { grid-template-columns: 1fr 1fr; max-width: 640px; } }
-  @media (max-width: 480px) { .cohort-grid { grid-template-columns: 1fr; max-width: 340px; } }
-  .cohort-card {
-    background: var(--white);
-    border: 1px solid var(--hairline);
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 14px 30px rgba(31,45,51,0.06);
-    text-align: left;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    width: 100%;
-    font: inherit;
-    color: inherit;
-    border: 1px solid var(--hairline);
-    padding: 0;
-  }
-  .cohort-card:hover, .cohort-card:focus-visible {
-    transform: translateY(-3px);
-    box-shadow: 0 20px 36px rgba(31,45,51,0.12);
-    outline: none;
-  }
-  .cohort-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: contain;
-    background: var(--ink);
-    display: block;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .cohort-card-body { padding: 16px 18px; }
-  .cohort-card-name {
-    font-family: var(--display);
-    font-size: 14.5px;
-    font-weight: 700;
-    color: var(--ink);
-  }
-  .cohort-card-stat {
-    font-family: var(--body);
-    font-size: 13.5px;
-    color: var(--ink-muted);
-    margin-top: 2px;
-  }
-  .cohort-card-stat strong { color: var(--accent); font-weight: 700; }
-  .cohort-card-more {
-    font-family: var(--display);
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--accent);
-    margin-top: 10px;
-  }
-
-  /* ── STORY MODAL ── */
-  .story-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.28s ease, visibility 0s linear 0.28s;
-  }
-  .story-modal.open {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition: opacity 0.28s ease, visibility 0s linear 0s;
-  }
-  .story-modal-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(31,45,51,0.72);
-  }
-  .story-modal-panel {
-    position: relative;
-    background: var(--white);
-    border-radius: 18px;
-    max-width: 560px;
-    width: 100%;
-    max-height: 88vh;
-    overflow-y: auto;
-    box-shadow: 0 30px 70px rgba(0,0,0,0.35);
-    transform: translateY(28px) scale(0.98);
-    opacity: 0;
-    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.26s ease;
-  }
-  .story-modal.open .story-modal-panel {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  .story-modal-close {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 2;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: rgba(31,45,51,0.85);
-    color: #fff;
-    border: none;
-    font-size: 18px;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .story-modal-media { position: relative; }
-  .story-modal-images {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    background: var(--ink);
-  }
-  .story-modal-images img {
-    flex: none;
-    width: 100%;
-    scroll-snap-align: start;
-    max-height: 380px;
-    object-fit: contain;
-    display: block;
-  }
-  .story-modal-next {
-    position: absolute;
-    right: 14px;
-    bottom: 14px;
-    z-index: 2;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(31,45,51,0.85);
-    color: #fff;
-    border: none;
-    font-size: 17px;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-  .story-modal-next:hover { transform: scale(1.06); }
-  .story-modal-next[hidden] { display: none; }
-  .story-modal-body { padding: 26px 28px 30px; }
-  .story-modal-name {
-    font-family: var(--display);
-    font-size: 20px;
-    font-weight: 800;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-  }
-  .story-modal-role {
-    font-family: var(--display);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--ink-faint);
-    margin-top: 3px;
-    margin-bottom: 16px;
-  }
-  .story-modal-text {
-    font-family: var(--body);
-    font-size: 15px;
-    line-height: 1.65;
-    color: var(--ink-soft);
-  }
-
-  /* ── RULES ── */
-  .rules-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  @media (max-width: 760px) { .rules-grid { grid-template-columns: 1fr; } }
-  .rule-card {
-    background: var(--white);
-    border: 1px solid var(--hairline);
-    border-radius: 14px;
-    padding: 28px 24px;
-    text-align: left;
-  }
-  .rule-num {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: var(--white);
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: 14px;
-    margin-bottom: 16px;
-  }
-  .rule-name {
-    font-family: var(--display);
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin-bottom: 6px;
-  }
-  .rule-desc { font-family: var(--body); font-size: 14.5px; color: var(--ink-muted); }
-
-  .rules-cta { text-align: center; margin-top: 40px; }
-  .rules-cta .hero-micro { margin-top: 12px; }
-
-  /* ── COACHES ── */
-  .coach-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 36px;
-    max-width: 780px;
-    margin: 0 auto;
-  }
-  .coach-card { text-align: center; }
-  .coach-id { display: block; }
-  .coach-photo {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto 18px;
-    border: 4px solid var(--white);
-    box-shadow: 0 14px 30px rgba(31,45,51,0.16);
-  }
-  .coach-name {
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: 18px;
-    letter-spacing: -0.01em;
-    color: var(--ink);
-    margin-bottom: 10px;
-  }
-  .coach-handle {
-    font-family: var(--body);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-  .coach-stats { list-style: none; display: inline-block; text-align: left; }
-  .coach-stats li {
-    font-family: var(--body);
-    font-size: 14px;
-    color: var(--ink-muted);
-    padding: 4px 0;
-    display: flex;
-    gap: 8px;
-  }
-  .coach-stats li::before { content: '-'; color: var(--ink-faint); flex-shrink: 0; }
-  .coach-stats li strong { color: var(--ink); font-weight: 700; }
-  .coach-social {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 14px;
-  }
-  .coach-social-link {
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    background: var(--white);
-    border: 1px solid var(--hairline);
-    color: var(--ink);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-  }
-  .coach-social-link svg { width: 16px; height: 16px; }
-  .coach-social-link:hover { background: var(--ink); color: #fff; transform: translateY(-2px); }
-  @media (max-width: 760px) {
-    .coach-grid { grid-template-columns: 1fr; max-width: 380px; gap: 26px; }
-    .coach-card {
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--charcoal);
       display: flex;
-      align-items: center;
-      gap: 18px;
-      text-align: left;
-      width: 100%;
-      max-width: 328px;
+      justify-content: center;
+      padding: 10px 16px;
+    }
+    .topbar img { width: 64px; height: 64px; }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 36px 16px 24px;
+      text-align: center;
+    }
+    .label {
+      font-family: var(--display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    h1 {
+      text-wrap: balance;
+      font-family: var(--display);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: clamp(32px, 6vw, 56px);
+      line-height: 1.02;
+      letter-spacing: 0.005em;
+      color: var(--ink);
+      margin: 12px 0 14px;
+    }
+    h1 .teal { color: var(--teal); }
+    .desk-br { display: none; }
+    @media (min-width: 920px) { .desk-br { display: inline; } }
+    .sub {
+      font-size: clamp(16px, 2vw, 19px);
+      color: var(--ink-muted);
+      max-width: 560px;
       margin: 0 auto;
     }
-    .coach-id {
-      flex: none;
-      width: 88px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+
+
+    /* ── OFFER: mockup + form ── */
+    .offer { margin-top: 24px; }
+    .offer .mockup { display: block; max-width: 440px; margin: 0 auto 4px; }
+    .offer .mockup img { width: 100%; height: auto; }
+    @media (min-width: 920px) {
+      .hero { max-width: 1080px; }
+      .sub { max-width: 620px; }
+      .offer {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+        gap: 40px;
+        align-items: center;
+        margin-top: 32px;
+      }
+      .offer .mockup { max-width: 100%; margin: 0; }
+      .offer .form-card, .offer .trust, .offer .consent { margin-left: 0; margin-right: 0; max-width: none; }
     }
-    .coach-photo { width: 88px; height: 88px; margin: 0 0 8px; }
-    .coach-name { margin-bottom: 0; font-size: 15px; text-align: center; }
-    .coach-details { flex: 1; }
-    .coach-stats { display: block; }
-    .coach-stats li { padding: 2px 0; }
-    .coach-social { justify-content: flex-start; margin-top: 10px; }
-  }
 
-  /* ── VALUE STACK ── */
-  .value-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    max-width: 960px;
-    margin: 0 auto 8px;
-  }
-  @media (max-width: 900px) { .value-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px) { .value-grid { grid-template-columns: 1fr; } }
-  .value-card {
-    background: var(--bg-card);
-    border: 1px solid var(--hairline);
-    border-radius: 14px;
-    padding: 24px;
-  }
-  .value-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: rgba(61,119,117,0.1);
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--display);
-    font-weight: 800;
-    font-size: 16px;
-    margin-bottom: 14px;
-  }
-  .value-name {
-    font-family: var(--display);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-  }
-  .value-tag {
-    font-family: var(--display);
-    font-size: 12.5px;
-    font-weight: 700;
-    color: var(--accent);
-    margin-top: 4px;
-    margin-bottom: 10px;
-    display: block;
-  }
-  .value-desc { font-family: var(--body); font-size: 14px; color: var(--ink-muted); line-height: 1.55; }
+    /* ── FORM CARD ── */
+    .form-card {
+      max-width: 460px;
+      margin: 8px auto 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 26px 24px 22px;
+      box-shadow: 0 18px 40px rgba(31,45,51,0.08);
+      text-align: left;
+    }
+    .progress {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .progress-track {
+      flex: 1;
+      height: 6px;
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 50%;
+      background: var(--teal);
+      border-radius: 999px;
+      transition: width 0.35s ease;
+    }
+    .progress-text {
+      font-family: var(--display);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      white-space: nowrap;
+    }
 
-  .value-total {
-    max-width: 560px;
-    margin: 36px auto 0;
-    background: var(--ink);
-    border-radius: 14px;
-    padding: 26px 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-  .value-total-label {
-    font-family: var(--display);
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(255,255,255,0.7);
-  }
-  .value-total-amount {
-    font-family: var(--display);
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--accent-light);
-    letter-spacing: -0.02em;
-  }
-  .value-total-strike { text-decoration: line-through; opacity: 0.5; font-weight: 500; font-size: 18px; margin-right: 8px; }
+    .step h2 {
+      font-family: var(--display);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 12px;
+      letter-spacing: 0.005em;
+    }
+    .step label { display: block; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .step .sr {
+      position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+    }
+    .field {
+      width: 100%;
+      font: inherit;
+      font-size: 17px;
+      color: var(--ink);
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 14px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .field::placeholder { color: #8a9ba0; }
+    .field:focus {
+      outline: none;
+      border-color: var(--teal);
+      box-shadow: 0 0 0 3px rgba(61,119,117,0.18);
+      background: var(--white);
+    }
+    .field[aria-invalid="true"] { border-color: #b4483a; }
+    .error {
+      font-size: 13.5px;
+      color: #b4483a;
+      margin-top: 6px;
+      min-height: 1em;
+    }
 
-  /* ── BUY ── */
-  .buy-section { text-align: center; }
-  .buy-card {
-    background: var(--white);
-    border: 1px solid var(--hairline);
-    border-radius: 18px;
-    padding: 36px;
-    max-width: 440px;
-    margin: 0 auto;
-    box-shadow: 0 24px 50px rgba(31,45,51,0.08);
-  }
-  .price-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 22px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .price { font-family: var(--display); font-size: 44px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
-  .price-note { font-family: var(--body); font-size: 13.5px; color: var(--ink-muted); }
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      margin-top: 12px;
+      font-family: var(--display);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--teal);
+      border: 0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .btn:hover { background: var(--teal-dark); transform: translateY(-1px); }
+    .btn:focus-visible { outline: 3px solid var(--teal-light); outline-offset: 2px; }
+    .btn[disabled] { opacity: 0.7; cursor: wait; transform: none; }
 
-  .includes { list-style: none; margin-bottom: 26px; text-align: left; }
-  .includes li {
-    font-family: var(--body);
-    font-size: 14.5px;
-    color: var(--ink-soft);
-    padding: 8px 0;
-    display: flex;
-    gap: 10px;
-    border-bottom: 1px solid var(--hairline);
-  }
-  .includes li:last-child { border-bottom: none; }
-  .includes li::before { content: '✓'; color: var(--accent); font-weight: 800; flex-shrink: 0; }
+    .back {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 14px;
+      color: var(--ink-muted);
+      background: none;
+      border: 0;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
 
-  .buy-card .hero-cta { margin-top: 0; width: 100%; justify-content: center; }
-  .buy-footnote { font-family: var(--body); font-size: 13px; color: var(--ink-faint); text-align: center; margin-top: 16px; }
+    .micro {
+      text-align: center;
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      margin-top: 12px;
+    }
 
-  /* ── FOOTER ── */
-  footer {
-    padding: 40px 24px;
-    text-align: center;
-    border-top: 1px solid var(--hairline);
-  }
-  .footer-meta {
-    font-family: var(--display);
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    color: var(--ink-faint);
-    font-weight: 500;
-    line-height: 1.8;
-  }
+    .trust {
+      list-style: none;
+      max-width: 460px;
+      margin: 20px auto 0;
+      display: grid;
+      gap: 8px;
+      text-align: left;
+    }
+    .trust li {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+    .trust li::before {
+      content: '✓';
+      color: var(--teal);
+      font-weight: 700;
+      flex: none;
+    }
+    .consent {
+      max-width: 460px;
+      margin: 16px auto 0;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: var(--ink-muted);
+      text-align: center;
+    }
 
-  ::selection { background: var(--ink); color: var(--white); }
-</style>
+    /* ── WHAT'S INSIDE ── */
+    .inside {
+      background: var(--off-white);
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+      padding: 56px 16px 64px;
+    }
+    .inside-wrap { max-width: 760px; margin: 0 auto; }
+    .inside h2 {
+      font-family: var(--display);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: clamp(26px, 4vw, 34px);
+      color: var(--ink);
+      margin: 8px 0 22px;
+      line-height: 1.1;
+    }
+    .stages { list-style: none; display: grid; gap: 10px; }
+    .stages li {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr);
+      align-items: baseline;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+    }
+    .stage-num {
+      font-family: var(--display);
+      font-weight: 600;
+      color: var(--teal);
+      font-size: 17px;
+    }
+    .stage-name {
+      font-family: var(--display);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--ink);
+      font-size: 16px;
+      letter-spacing: 0.02em;
+    }
+    .stage-desc { font-size: 14.5px; color: var(--ink-muted); }
+    .tools {
+      margin-top: 18px;
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+    .tools strong { color: var(--ink); }
+    .inside .btn { max-width: 460px; margin: 26px auto 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      color: var(--muted-dark);
+      text-align: center;
+      padding: 28px 16px 32px;
+      font-size: 13px;
+    }
+    footer img { width: 56px; height: 56px; margin: 0 auto 8px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="offer-bar">
-  <span class="offer-label">Limited to 100 spots</span>
-  <span class="offer-copy">Cohort closes in:</span>
-  <span class="offer-countdown" id="offer-countdown">--h --m --s</span>
-</div>
+  <header class="topbar">
+    <img src="cl.svg" alt="Creator Launchpad" width="64" height="64">
+  </header>
 
-<main>
-  <!-- ── HERO ── -->
-  <div class="container hero">
-    <span class="eyebrow">The $100 Challenge</span>
-    <h1>Post every day for 30 days.<br>Get <span class="accent-underline">110% of your money back.</span></h1>
+  <main>
+    <section class="hero">
+      <div class="label">Your brand is ready for liftoff</div>
+      <h1>Get the free <span class="teal">Creator<br class="desk-br"> Launch Kit</span></h1>
+      <p class="sub">Download the free starter kit that will help get your personal brand off the ground.</p>
 
-    <div class="vsl-wrap">
-      <div class="vsl-frame">
-        <video controls preload="metadata" playsinline poster="images/vsl-thumbnail.webp" src="https://assets-v2.circle.so/sfg7ogatd87vu2i3038jhurvdupw"></video>
-      </div>
-    </div>
-
-    <p class="lead">
-      You are 30 days away from changing your life; and it all starts with just one post per day. We'll pay you back if you do the work.
-    </p>
-    <a href="https://launchpad.dailypostchallenge.com/" class="hero-cta">Join The Challenge <span class="arrow">&rarr;</span></a>
-    <span class="hero-micro">Limited to 100 spots per cohort</span>
-  </div>
-
-  <!-- ── PROOF ── -->
-  <section class="alt">
-    <div class="container">
-      <h2>We are already winning</h2>
-      <p class="section-sub">Real people getting real results.</p>
-      <div class="cohort-grid">
-        <button type="button" class="cohort-card" data-story="joe">
-          <img src="images/proof-joe.png" alt="Screenshot of Joe's follower growth: 11,152 followers, +569.0% vs June 5.">
-          <div class="cohort-card-body">
-            <div class="cohort-card-name">Joe</div>
-            <div class="cohort-card-stat">Zero to <strong>11,000+ followers</strong> in 30 days</div>
-            <div class="cohort-card-more">Read the story →</div>
-          </div>
-        </button>
-        <button type="button" class="cohort-card" data-story="hailey">
-          <img src="images/proof-hailey-card.png" alt="Hailey Ky's Instagram profile, ky.frequency: 14.6K followers.">
-          <div class="cohort-card-body">
-            <div class="cohort-card-name">Hailey Ky</div>
-            <div class="cohort-card-stat"><strong>300 to 14K+ followers</strong> in 20 days, plus her first product sales</div>
-            <div class="cohort-card-more">Read the story →</div>
-          </div>
-        </button>
-        <button type="button" class="cohort-card" data-story="zach">
-          <img src="images/proof-zach.jpg" alt="Screenshot of Zach B's Instagram Insights showing 62,447 views.">
-          <div class="cohort-card-body">
-            <div class="cohort-card-name">Zach B</div>
-            <div class="cohort-card-stat">Day 2: <strong>62K views</strong>, 87 comments</div>
-            <div class="cohort-card-more">Read the story →</div>
-          </div>
-        </button>
-        <button type="button" class="cohort-card" data-story="coco">
-          <img src="images/proof-coco.jpg" alt="Screenshot of Coco's Reel insights showing 169,543 views.">
-          <div class="cohort-card-body">
-            <div class="cohort-card-name">Coco</div>
-            <div class="cohort-card-stat">Day 1: <strong>169K views</strong> on a 25-second video</div>
-            <div class="cohort-card-more">Read the story →</div>
-          </div>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── RULES ── -->
-  <section>
-    <div class="container">
-      <div class="section-label">Challenge Rules</div>
-      <h2>The difference between where you are now and where you want to be is the action you take today.</h2>
-      <p class="section-sub">Here are the challenge rules:</p>
-      <div class="rules-grid">
-        <div class="rule-card">
-          <div class="rule-num">01</div>
-          <div class="rule-name">You must post 1 video per day</div>
-          <div class="rule-desc">Each day you must upload a video. Static posts do not count.</div>
+      <div class="offer">
+        <div class="offer-media">
+          <picture class="mockup">
+            <source srcset="kit-mockup.webp" type="image/webp">
+            <img src="kit-mockup.png" alt="Pages from the Creator Launch Kit: the cover, 01 Purpose: Why are you creating?, and the first-video checklist" width="1125" height="921">
+          </picture>
         </div>
-        <div class="rule-card">
-          <div class="rule-num">02</div>
-          <div class="rule-name">1 channel focus</div>
-          <div class="rule-desc">You must post daily on a specific channel of your choice.</div>
+        <div class="offer-form">
+
+      <!--
+        HOW SUBMISSIONS WORK
+        Sign-ups go to the MailerLite "Creator Launch Kit" form (account
+        2346542, form 200539719975568936), which adds them to that form's
+        group. The endpoint is set at the bottom of this page.
+      -->
+      <form class="form-card" id="kit-form" action="thank-you/" method="get" novalidate>
+        <div class="progress" aria-hidden="true">
+          <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+          <div class="progress-text" id="progress-text">Step 1 of 2</div>
         </div>
-        <div class="rule-card">
-          <div class="rule-num">03</div>
-          <div class="rule-name">No reposting existing content</div>
-          <div class="rule-desc">Every post must be new and original.</div>
+
+        <div class="step" id="step-1">
+          <h2>What's your first name?</h2>
+          <label><span class="sr">First name</span>
+            <input class="field" type="text" name="first_name" id="first_name" placeholder="First name" autocomplete="given-name" required>
+          </label>
+          <div class="error" id="err-name" aria-live="polite"></div>
+          <button class="btn" type="button" id="next">Continue &rarr;</button>
+        </div>
+
+        <div class="step" id="step-2">
+          <h2>Where should we send it?</h2>
+          <label><span class="sr">Email address</span>
+            <input class="field" type="email" name="email" id="email" placeholder="you@email.com" autocomplete="email" inputmode="email" required>
+          </label>
+          <div class="error" id="err-email" aria-live="polite"></div>
+          <button class="btn" type="submit" id="submit">Send me the kit &rarr;</button>
+          <button class="back" type="button" id="back">&larr; Back</button>
+        </div>
+
+        <div class="hp" aria-hidden="true">
+          <label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+        <p class="micro">Free. Takes about 20 seconds.</p>
+      </form>
+
+      <ul class="trust">
+        <li>Instant download, plus a copy sent to your inbox</li>
+        <li>Built from 1.5 billion organic views of real-world testing</li>
+        <li>Fill-in prompts and a first-video checklist included</li>
+      </ul>
+      <p class="consent">By submitting, you agree to get the kit and occasional emails from Creator Launchpad. Unsubscribe anytime. We never sell your information.</p>
         </div>
       </div>
-      <div class="rules-cta">
-        <a href="https://launchpad.dailypostchallenge.com/" class="hero-cta">Join The Challenge <span class="arrow">&rarr;</span></a>
-        <span class="hero-micro">Limited to 100 spots per cohort</span>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── COACHES ── -->
-  <section class="alt">
-    <div class="container">
-      <div class="section-label">Your Coaches</div>
-      <h2>Meet your coaches</h2>
-      <p class="section-sub">People who've actually done it, not just talked about it.</p>
-      <div class="coach-grid">
-        <div class="coach-card">
-          <div class="coach-id">
-            <img class="coach-photo" src="images/coach-matt.jpg" alt="Matt">
-            <div class="coach-name">Matt</div>
-          </div>
-          <div class="coach-details">
-            <div class="coach-handle">@notmattgraham</div>
-            <ul class="coach-stats">
-              <li><strong>1.1M</strong> followers</li>
-              <li><strong>1.5B</strong> views</li>
-            </ul>
-            <div class="coach-social">
-              <a class="coach-social-link" href="https://instagram.com/notmattgraham" target="_blank" rel="noopener" aria-label="Matt on Instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
-              </a>
-              <a class="coach-social-link" href="https://tiktok.com/@notmattgraham" target="_blank" rel="noopener" aria-label="Matt on TikTok">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="coach-card">
-          <div class="coach-id">
-            <img class="coach-photo" src="images/coach-justyn.jpg" alt="Justyn">
-            <div class="coach-name">Justyn</div>
-          </div>
-          <div class="coach-details">
-            <div class="coach-handle">@justyn.ai</div>
-            <ul class="coach-stats">
-              <li><strong>250K</strong> followers</li>
-              <li><strong>500+</strong> days in a row of posting</li>
-            </ul>
-            <div class="coach-social">
-              <a class="coach-social-link" href="https://instagram.com/justyn.ai" target="_blank" rel="noopener" aria-label="Justyn on Instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
-              </a>
-              <a class="coach-social-link" href="https://tiktok.com/@justyn.ai" target="_blank" rel="noopener" aria-label="Justyn on TikTok">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="coach-card">
-          <div class="coach-id">
-            <img class="coach-photo" src="images/coach-joe.jpg" alt="Joe">
-            <div class="coach-name">Joe</div>
-          </div>
-          <div class="coach-details">
-            <div class="coach-handle">@joejitsu.tech</div>
-            <ul class="coach-stats">
-              <li><strong>75K</strong> followers</li>
-              <li><strong>0 to 11K</strong> followers in 30 days</li>
-            </ul>
-            <div class="coach-social">
-              <a class="coach-social-link" href="https://instagram.com/joejitsu.tech" target="_blank" rel="noopener" aria-label="Joe on Instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg>
-              </a>
-              <a class="coach-social-link" href="https://tiktok.com/@joezapiain" target="_blank" rel="noopener" aria-label="Joe on TikTok">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
+    <section class="inside">
+      <div class="inside-wrap">
+        <div class="label">What's inside</div>
+        <h2>From zero to your first video</h2>
+        <ol class="stages">
+          <li><span class="stage-num">01</span><div><div class="stage-name">Purpose</div><div class="stage-desc">Decide why you're creating and what you want to happen.</div></div></li>
+          <li><span class="stage-num">02</span><div><div class="stage-name">Get comfortable</div><div class="stage-desc">It will feel awkward. Talk like you're on FaceTime with one friend.</div></div></li>
+          <li><span class="stage-num">03</span><div><div class="stage-name">Your point</div><div class="stage-desc">Choose the value you give: education, entertainment, or inspiration. Then make one clear point.</div></div></li>
+          <li><span class="stage-num">04</span><div><div class="stage-name">Record and edit</div><div class="stage-desc">Keep the setup simple. Know your words, look at the lens, cut the dead time.</div></div></li>
+          <li><span class="stage-num">05</span><div><div class="stage-name">Publish</div><div class="stage-desc">Run the first-video checklist, post it, then improve one thing next time.</div></div></li>
+        </ol>
+        <p class="tools"><strong>Plus:</strong> fill-in prompts on each page and a first-video checklist you can reuse for every post.</p>
+        <a class="btn" href="#kit-form" id="jump">Get the free kit &rarr;</a>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ── VALUE STACK ── -->
-  <section>
-    <div class="container">
-      <div class="section-label">What You Get</div>
-      <h2>We Help You Win!</h2>
-      <p class="section-sub">We give you all the resources you need to win your 30-day challenge.</p>
-      <div class="value-grid">
-        <div class="value-card">
-          <div class="value-icon">01</div>
-          <div class="value-name">Weekly Content Call</div>
-          <span class="value-tag">($999 value)</span>
-          <div class="value-desc">Interactive workshop with unlimited Q&amp;A. I'll keep answering until there are none left!</div>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">02</div>
-          <div class="value-name">AI Content Hub</div>
-          <span class="value-tag">($199 value)</span>
-          <div class="value-desc">A fill-in-the-blanks project that becomes your content command center inside ChatGPT.</div>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">03</div>
-          <div class="value-name">Pull / Drag Audit Custom GPT</div>
-          <span class="value-tag">($99 value)</span>
-          <div class="value-desc">Diagnose exactly why you haven't been able to stick with creating content every time you've tried.</div>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">04</div>
-          <div class="value-name">Setlist Creator</div>
-          <span class="value-tag">($99 value)</span>
-          <div class="value-desc">A template for selecting your core content pillars to create repeatable, winning content.</div>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">05</div>
-          <div class="value-name">30-in-30 Tracker Template</div>
-          <span class="value-tag">($99 value)</span>
-          <div class="value-desc">Most leadership programs leave you on your own. We don't. Get ongoing coaching, an engaged community, weekly mastermind calls, and real-time support exactly when you need it most.</div>
-        </div>
-        <div class="value-card">
-          <div class="value-icon">06</div>
-          <div class="value-name">Content Reposting Automations</div>
-          <span class="value-tag">($399 value)</span>
-          <div class="value-desc">Automatically repost your content to the other major platforms.</div>
-        </div>
-      </div>
-      <div class="value-total">
-        <span class="value-total-label">Total bonus value</span>
-        <span class="value-total-amount"><span class="value-total-strike">$1,894</span>included free</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── BUY ── -->
-  <section class="alt buy-section">
-    <div class="container">
-      <h2>Ready to commit?</h2>
-      <p class="lead" style="margin-bottom: 36px;">Only 100 spots per cohort. A new cohort forms <strong>every day</strong>, so join today's.</p>
-      <div class="buy-card">
-        <div class="price-row">
-          <span class="price">$100</span>
-          <span class="price-note">entry · 110% back on completion</span>
-        </div>
-        <ul class="includes">
-          <li>30-day posting challenge, starts today</li>
-          <li>Weekly Content Call ($999 value)</li>
-          <li>AI Content Hub ($199 value)</li>
-          <li>Pull / Drag Audit Custom GPT ($99 value)</li>
-          <li>Setlist Creator ($99 value)</li>
-          <li>30-in-30 Tracker Template ($99 value)</li>
-          <li>Content Reposting Automations ($399 value)</li>
-        </ul>
-        <a href="https://launchpad.dailypostchallenge.com/" class="hero-cta">Join The Challenge <span class="arrow">&rarr;</span></a>
-        <div class="buy-footnote">Limited to 100 spots per challenge.</div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="footer-meta">
-    &copy; 2026 Daily Post Challenge
-  </div>
-</footer>
-
-<div class="story-modal" id="story-modal">
-  <div class="story-modal-backdrop" data-close></div>
-  <div class="story-modal-panel" role="dialog" aria-modal="true" aria-labelledby="story-modal-name">
-    <button type="button" class="story-modal-close" data-close aria-label="Close">&times;</button>
-    <div class="story-modal-media">
-      <div class="story-modal-images" id="story-modal-images"></div>
-      <button type="button" class="story-modal-next" id="story-modal-next" aria-label="Next photo">&rarr;</button>
-    </div>
-    <div class="story-modal-body">
-      <div class="story-modal-name" id="story-modal-name"></div>
-      <div class="story-modal-role" id="story-modal-role"></div>
-      <p class="story-modal-text" id="story-modal-text"></p>
-    </div>
-  </div>
-</div>
+  <footer>
+    <img src="cl.svg" alt="Creator Launchpad" width="56" height="56">
+    &copy; 2026 Creator Launchpad
+  </footer>
 
 <script>
   (function () {
-    var stories = {
-      joe: {
-        name: 'Joe',
-        role: 'Cohort graduate · full 30-day challenge',
-        images: ['images/proof-joe.png', 'images/proof-joe-2.png'],
-        text: "Joe started the challenge with zero real momentum. Thirty days of daily posting later, he'd grown to 11,152 followers (up 569%) and racked up 10,528,900 views on his content. 99.4% of those views came from people who didn't already follow him: proof the work was landing in front of brand-new eyes, every single day."
-      },
-      hailey: {
-        name: 'Hailey Ky',
-        role: 'Nomadic Entrepreneur · Cohort 1',
-        images: ['images/proof-hailey-profile.png', 'images/proof-hailey-239k.png', 'images/proof-hailey.jpg'],
-        text: "Hailey started with about 300 followers on Instagram and videos that averaged 300 to 500 views. Early in the challenge, one of her videos hit 50,000 views, her most popular at the time. Her very next video, posted on day 4, passed 100,000 views and has since climbed to 239,000. In about 20 days she crossed 14,000 followers, launched her first product, and has already made multiple sales. She's officially monetized her brand."
-      },
-      zach: {
-        name: 'Zach B',
-        role: 'I build things · Cohort 2',
-        images: ['images/proof-zach.jpg'],
-        text: 'Zach told a friend he "sucked at social" and there was no way any of this would work. Two days into the challenge, a single post had pulled 62,447 views, 1,550 viewers, 695 likes, and 87 comments.'
-      },
-      coco: {
-        name: 'Coco',
-        role: 'Intentional Remote Work · Cohort 1',
-        images: ['images/proof-coco.jpg'],
-        text: "Coco's very first post, a 25-second video on day 1, pulled 169,543 views (157,986 of them on Facebook alone), 2K likes, and 366 total interactions before day 2 even started."
+    // MailerLite "Creator Launch Kit" form (embed mlb2-46769664). Submitting
+    // here adds the person to that form's group, which triggers the kit email.
+    // Leave empty to skip sending.
+    var FORM_ENDPOINT = 'https://assets.mailerlite.com/jsonp/2346542/forms/200539719975568936/subscribe';
+
+    var form = document.getElementById('kit-form');
+    var step1 = document.getElementById('step-1');
+    var step2 = document.getElementById('step-2');
+    var nameEl = document.getElementById('first_name');
+    var emailEl = document.getElementById('email');
+    var errName = document.getElementById('err-name');
+    var errEmail = document.getElementById('err-email');
+    var fill = document.getElementById('progress-fill');
+    var progressText = document.getElementById('progress-text');
+    var submitBtn = document.getElementById('submit');
+
+    // Without JS both fields show and the form still works.
+    step2.hidden = true;
+
+    function showStep(n) {
+      step1.hidden = n !== 1;
+      step2.hidden = n !== 2;
+      fill.style.width = n === 1 ? '50%' : '100%';
+      progressText.textContent = 'Step ' + n + ' of 2';
+      (n === 1 ? nameEl : emailEl).focus();
+    }
+
+    function validName() {
+      var ok = nameEl.value.trim().length > 0;
+      errName.textContent = ok ? '' : 'Please enter your first name.';
+      nameEl.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      return ok;
+    }
+
+    function validEmail() {
+      var v = emailEl.value.trim();
+      var ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+      errEmail.textContent = ok ? '' : 'Please enter a valid email address.';
+      emailEl.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      return ok;
+    }
+
+    document.getElementById('next').addEventListener('click', function () {
+      if (validName()) showStep(2);
+    });
+    nameEl.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); if (validName()) showStep(2); }
+    });
+    document.getElementById('back').addEventListener('click', function () { showStep(1); });
+
+    document.getElementById('jump').addEventListener('click', function (e) {
+      e.preventDefault();
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setTimeout(function () { (step2.hidden ? nameEl : emailEl).focus({ preventScroll: true }); }, 400);
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!validName()) { showStep(1); return; }
+      if (!validEmail()) return;
+
+      // Personalize the thank-you page without putting anything in the URL.
+      try { sessionStorage.setItem('kit_first_name', nameEl.value.trim()); } catch (err) {}
+
+      function done() { window.location.href = 'thank-you/'; }
+      if (!FORM_ENDPOINT) { done(); return; }
+
+      // Bots fill in the hidden "website" field; skip sending for them.
+      if (form.website && form.website.value) { done(); return; }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      // Same request MailerLite's own embed script sends: a GET with the
+      // form fields plus ajax=1 and a visitor guid.
+      var data = new URLSearchParams();
+      data.set('fields[name]', nameEl.value.trim());
+      data.set('fields[email]', emailEl.value.trim());
+      data.set('ml-submit', '1');
+      data.set('anticsrf', 'true');
+      data.set('ajax', '1');
+      data.set('guid', (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+        : 'g' + Date.now().toString(36) + Math.random().toString(36).slice(2));
+
+      function resetButton() {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send me the kit &rarr;';
       }
-    };
 
-    var modal = document.getElementById('story-modal');
-    var imagesEl = document.getElementById('story-modal-images');
-    var nextBtn = document.getElementById('story-modal-next');
-    var nameEl = document.getElementById('story-modal-name');
-    var roleEl = document.getElementById('story-modal-role');
-    var textEl = document.getElementById('story-modal-text');
-    var lastFocused = null;
-    var imageCount = 1;
+      // MailerLite answers with JSON. If it rejects the email, show why and
+      // let them fix it. Any other hiccup still sends them to the thank-you
+      // page, which has the instant download, so nobody gets stuck.
+      var finished = false;
+      function finish() { if (!finished) { finished = true; done(); } }
+      var timer = setTimeout(finish, 8000);
 
-    // A dot indicator is invisible against the white screenshots most of
-    // these stories use, so a solid dark "next" arrow replaces it. It stays
-    // legible regardless of what's behind it, and hides once there's nothing
-    // left to advance to.
-    function updateNextButton() {
-      var index = Math.round(imagesEl.scrollLeft / imagesEl.clientWidth);
-      nextBtn.hidden = imageCount <= 1 || index >= imageCount - 1;
-    }
-
-    imagesEl.addEventListener('scroll', updateNextButton);
-
-    nextBtn.addEventListener('click', function () {
-      var index = Math.round(imagesEl.scrollLeft / imagesEl.clientWidth);
-      imagesEl.scrollLeft = (index + 1) * imagesEl.clientWidth;
+      fetch(FORM_ENDPOINT + '?' + data.toString(), { method: 'GET' })
+        .then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (json) {
+            if (res.ok && json.success !== false) { clearTimeout(timer); finish(); return; }
+            var msg = json.errors && json.errors.fields && json.errors.fields.email;
+            if (msg && !finished) {
+              clearTimeout(timer);
+              errEmail.textContent = Array.isArray(msg) ? msg[0] : String(msg);
+              emailEl.setAttribute('aria-invalid', 'true');
+              resetButton();
+              emailEl.focus();
+            } else {
+              clearTimeout(timer); finish();
+            }
+          });
+        })
+        .catch(function () { clearTimeout(timer); finish(); });
     });
-
-    function openStory(key) {
-      var s = stories[key];
-      if (!s) return;
-      imagesEl.innerHTML = '';
-      s.images.forEach(function (src) {
-        var img = document.createElement('img');
-        img.src = src;
-        img.alt = s.name + ' proof screenshot';
-        imagesEl.appendChild(img);
-      });
-      imageCount = s.images.length;
-      imagesEl.scrollLeft = 0;
-      updateNextButton();
-      nameEl.textContent = s.name;
-      roleEl.textContent = s.role;
-      textEl.textContent = s.text;
-      lastFocused = document.activeElement;
-      modal.classList.add('open');
-      modal.querySelector('.story-modal-close').focus();
-    }
-
-    function closeStory() {
-      modal.classList.remove('open');
-      if (lastFocused) lastFocused.focus();
-    }
-
-    document.querySelectorAll('[data-story]').forEach(function (card) {
-      card.addEventListener('click', function () { openStory(card.getAttribute('data-story')); });
-    });
-    modal.querySelectorAll('[data-close]').forEach(function (el) {
-      el.addEventListener('click', closeStory);
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && modal.classList.contains('open')) closeStory();
-    });
-  })();
-</script>
-
-<script>
-  (function () {
-    var el = document.getElementById('offer-countdown');
-
-    function pad(n) { return String(n).padStart(2, '0'); }
-
-    // Resets to a fresh ~24h every midnight, recomputed on every tick, not
-    // captured once, so the countdown rolls over on its own at local midnight.
-    function tick() {
-      var now = new Date();
-      var midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
-      var diff = midnight.getTime() - now.getTime();
-      var h = Math.floor(diff / 3600000);
-      var m = Math.floor((diff % 3600000) / 60000);
-      var s = Math.floor((diff % 60000) / 1000);
-      el.textContent = pad(h) + 'h ' + pad(m) + 'm ' + pad(s) + 's';
-    }
-
-    tick();
-    setInterval(tick, 1000);
   })();
 </script>
 </body>
