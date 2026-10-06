@@ -491,11 +491,16 @@
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending…';
 
+      // Same request MailerLite's own embed script sends: a GET with the
+      // form fields plus ajax=1 and a visitor guid.
       var data = new URLSearchParams();
       data.set('fields[name]', nameEl.value.trim());
       data.set('fields[email]', emailEl.value.trim());
       data.set('ml-submit', '1');
       data.set('anticsrf', 'true');
+      data.set('ajax', '1');
+      data.set('guid', (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+        : 'g' + Date.now().toString(36) + Math.random().toString(36).slice(2));
 
       function resetButton() {
         submitBtn.disabled = false;
@@ -509,7 +514,7 @@
       function finish() { if (!finished) { finished = true; done(); } }
       var timer = setTimeout(finish, 8000);
 
-      fetch(FORM_ENDPOINT, { method: 'POST', body: data })
+      fetch(FORM_ENDPOINT + '?' + data.toString(), { method: 'GET' })
         .then(function (res) {
           return res.json().catch(function () { return {}; }).then(function (json) {
             if (res.ok && json.success !== false) { clearTimeout(timer); finish(); return; }

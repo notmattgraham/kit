@@ -162,8 +162,11 @@
       font-size: 13px;
     }
 
+    .btn { white-space: nowrap; }
+    .next strong, .challenge h2, .challenge .label { text-wrap: balance; }
     @media (max-width: 520px) {
-      .btn { width: 100%; }
+      .btn { width: 100%; padding: 16px 10px; font-size: clamp(12px, 3.9vw, 16px); letter-spacing: 0.02em; }
+      .challenge { padding: 24px 16px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; }
@@ -195,7 +198,7 @@
 
     <section class="challenge">
       <div class="label">Want help doing it every day?</div>
-      <h2>Start your 30-day challenge</h2>
+      <h2>Start your 30&#8209;day challenge</h2>
       <p>Daily accountability. Weekly calls with coaching and Q&amp;A. Resources and a creator community to help you apply each step and level up your content.</p>
       <a class="btn" href="https://notmattgraham.com/30/">Start your 30-day challenge &rsaquo;</a>
     </section>
