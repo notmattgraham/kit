@@ -48,9 +48,9 @@
       background: var(--charcoal);
       display: flex;
       justify-content: center;
-      padding: 10px 16px;
+      padding: 8px 16px;
     }
-    .topbar img { width: 64px; height: 64px; }
+    .topbar img { width: 64px; height: 64px; margin: -15px 0; }
 
     /* ── HERO ── */
     .hero {
@@ -321,6 +321,18 @@
       font-size: 13px;
     }
     footer img { width: 56px; height: 56px; margin: 0 auto 8px; }
+
+    /* Phones: keep the name field above the fold so people see the form
+       without scrolling. */
+    @media (max-width: 600px) {
+      .hero { padding-top: 20px; }
+      h1 { margin: 8px 0 10px; }
+      .offer { margin-top: 14px; }
+      .offer .mockup { max-width: 250px; margin-bottom: 0; }
+      .form-card { padding-top: 18px; }
+      .progress { margin-bottom: 12px; }
+      .step h2 { margin-bottom: 10px; }
+    }
 
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; }
