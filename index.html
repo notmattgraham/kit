@@ -350,11 +350,9 @@
 
       <!--
         HOW SUBMISSIONS WORK
-        Sign-ups go to the "Creator Launch Kit Leads" Google Sheet through an
-        Apps Script web app (see "Starter Kit - Google Sheet script.gs").
-        Paste the web app's /exec URL into FORM_ENDPOINT at the bottom of this
-        page. Until it's set, the form skips sending and goes straight to the
-        thank-you page.
+        Sign-ups go to MailerLite through the same form as the Challenge
+        Waitlist (account 2346542, embed 2XEk8c), so they join that form's
+        group. Endpoint and field names are set at the bottom of this page.
       -->
       <form class="form-card" id="kit-form" action="thank-you/" method="get" novalidate>
         <div class="progress" aria-hidden="true">
@@ -421,8 +419,9 @@
 
 <script>
   (function () {
-    // Google Apps Script web app URL (ends in /exec). Leave empty to skip sending.
-    var FORM_ENDPOINT = '';
+    // MailerLite form behind the Challenge Waitlist embed (2XEk8c). Posting here
+    // adds the person to that form's group. Leave empty to skip sending.
+    var FORM_ENDPOINT = 'https://assets.mailerlite.com/jsonp/2346542/forms/198773775896937926/subscribe';
 
     var form = document.getElementById('kit-form');
     var step1 = document.getElementById('step-1');
@@ -486,26 +485,47 @@
       function done() { window.location.href = 'thank-you/'; }
       if (!FORM_ENDPOINT) { done(); return; }
 
+      // Bots fill in the hidden "website" field; skip sending for them.
+      if (form.website && form.website.value) { done(); return; }
+
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending…';
-      var data = new URLSearchParams(new FormData(form));
-      data.set('page', location.href.split('?')[0]);
-      data.set('referrer', document.referrer || '');
-      var qs = new URLSearchParams(location.search);
-      ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function (k) {
-        if (qs.get(k)) data.set(k, qs.get(k));
-      });
 
-      // Apps Script doesn't send CORS headers, so post "no-cors": the row is
-      // saved even though the page can't read the response. keepalive lets
-      // the request finish after we move on, and the timeout makes sure a
-      // slow network never strands someone on the form.
+      var data = new URLSearchParams();
+      data.set('fields[name]', nameEl.value.trim());
+      data.set('fields[email]', emailEl.value.trim());
+      data.set('ml-submit', '1');
+      data.set('anticsrf', 'true');
+
+      function resetButton() {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send me the kit &rarr;';
+      }
+
+      // MailerLite answers with JSON. If it rejects the email, show why and
+      // let them fix it. Any other hiccup still sends them to the thank-you
+      // page, which has the instant download, so nobody gets stuck.
       var finished = false;
       function finish() { if (!finished) { finished = true; done(); } }
-      setTimeout(finish, 4000);
-      fetch(FORM_ENDPOINT, { method: 'POST', mode: 'no-cors', keepalive: true, body: data })
-        .catch(function () {})
-        .then(finish);
+      var timer = setTimeout(finish, 8000);
+
+      fetch(FORM_ENDPOINT, { method: 'POST', body: data })
+        .then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (json) {
+            if (res.ok && json.success !== false) { clearTimeout(timer); finish(); return; }
+            var msg = json.errors && json.errors.fields && json.errors.fields.email;
+            if (msg && !finished) {
+              clearTimeout(timer);
+              errEmail.textContent = Array.isArray(msg) ? msg[0] : String(msg);
+              emailEl.setAttribute('aria-invalid', 'true');
+              resetButton();
+              emailEl.focus();
+            } else {
+              clearTimeout(timer); finish();
+            }
+          });
+        })
+        .catch(function () { clearTimeout(timer); finish(); });
     });
   })();
 </script>
