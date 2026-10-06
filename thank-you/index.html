@@ -86,8 +86,14 @@
     }
     .sub { font-size: 18px; color: var(--ink-muted); }
 
-    .email-note { font-weight: 600; color: var(--ink); margin-top: 4px; }
-    .email-note .hint { font-weight: 400; color: var(--ink-muted); white-space: nowrap; }
+    /* Same geometric font as the line under the video, regular weight */
+    .email-note {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: clamp(18px, 2.6vw, 21px);
+      color: var(--ink);
+      margin-top: 2px;
+    }
     .pitch {
       font-family: var(--display);
       font-weight: 700;
@@ -97,6 +103,30 @@
       max-width: 520px;
       margin: 6px auto 0;
       text-wrap: balance;
+    }
+
+    .how {
+      list-style: none;
+      display: grid;
+      width: fit-content;
+      gap: 8px;
+      margin: 22px auto 0;
+      text-align: left;
+    }
+    .how li {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 18px;
+      color: var(--ink);
+    }
+    .how li::before {
+      content: '✓';
+      color: var(--teal);
+      font-weight: 700;
+      flex: none;
     }
 
     /* ── VIDEO ── */
@@ -238,7 +268,7 @@
     </div>
     <div class="label">You're in</div>
     <h1 id="headline">Your kit is on the way</h1>
-    <p class="sub email-note">Keep an eye on your email! <span class="hint">(Check the promotions tab.)</span></p>
+    <p class="email-note">Keep an eye on your email!</p>
 
     <div class="video-wrap">
       <video id="kit-video" src="https://join.dailypostchallenge.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCRXcrS3d3PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--bfdb4ec9baa38b90acd02ffec7f50ab627c87ec9/LaunchKitVideo.mp4" autoplay muted playsinline preload="auto"></video>
@@ -250,6 +280,11 @@
 
     <p class="pitch">Now that you have the tools, get the accountability to maximize them.</p>
     <a class="btn" href="https://notmattgraham.com/30/">Join the challenge &rarr;</a>
+    <ul class="how">
+      <li>One post every day</li>
+      <li>For 30 days</li>
+      <li>Get 110% of your money back</li>
+    </ul>
   </main>
 
   <footer>&copy; 2026 Creator Launchpad</footer>
