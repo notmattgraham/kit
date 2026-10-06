@@ -86,6 +86,19 @@
     }
     .sub { font-size: 18px; color: var(--ink-muted); }
 
+    .email-note { font-weight: 600; color: var(--ink); margin-top: 4px; }
+    .email-note .hint { font-weight: 400; color: var(--ink-muted); white-space: nowrap; }
+    .pitch {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(20px, 3.4vw, 26px);
+      line-height: 1.25;
+      color: var(--ink);
+      max-width: 520px;
+      margin: 6px auto 0;
+      text-wrap: balance;
+    }
+
     /* ── VIDEO ── */
     .video-wrap {
       position: relative;
@@ -225,6 +238,7 @@
     </div>
     <div class="label">You're in</div>
     <h1 id="headline">Your kit is on the way</h1>
+    <p class="sub email-note">Keep an eye on your email! <span class="hint">(Check the promotions tab.)</span></p>
 
     <div class="video-wrap">
       <video id="kit-video" src="https://join.dailypostchallenge.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCRXcrS3d3PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--bfdb4ec9baa38b90acd02ffec7f50ab627c87ec9/LaunchKitVideo.mp4" autoplay muted playsinline preload="auto"></video>
@@ -234,23 +248,8 @@
       </button>
     </div>
 
-    <p class="sub">We just sent the Creator Launch Kit to your inbox. Don't want to wait? Grab it right now.</p>
-
-    <a class="btn" href="../Creator%20Launch%20Kit.pdf" download="Creator Launch Kit.pdf">Download the kit (PDF) &darr;</a>
-    <p class="note">Not seeing the email in a few minutes? Check your promotions or spam folder.</p>
-
-    <ol class="next">
-      <li><span class="n">01</span><div><strong>Write down your reason</strong><span class="d">Fill in "I am creating content because..." on page 2.</span></div></li>
-      <li><span class="n">02</span><div><strong>Pick your one point</strong><span class="d">Choose the value your video gives and the one point you'll make (page 4).</span></div></li>
-      <li><span class="n">03</span><div><strong>Check it, then post it</strong><span class="d">Run the first-video checklist on page 6, publish, and improve one thing next time.</span></div></li>
-    </ol>
-
-    <section class="challenge">
-      <div class="label">Want help doing it every day?</div>
-      <h2>Start your 30&#8209;day challenge</h2>
-      <p>Daily accountability. Weekly calls with coaching and Q&amp;A. Resources and a creator community to help you apply each step and level up your content.</p>
-      <a class="btn" href="https://notmattgraham.com/30/">Start your 30-day challenge &rsaquo;</a>
-    </section>
+    <p class="pitch">Now that you have the tools, get the accountability to maximize them.</p>
+    <a class="btn" href="https://notmattgraham.com/30/">Join the challenge &rarr;</a>
   </main>
 
   <footer>&copy; 2026 Creator Launchpad</footer>
