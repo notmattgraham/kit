@@ -42,7 +42,7 @@
     a { color: inherit; }
 
     .topbar { background: var(--charcoal); display: flex; justify-content: center; padding: 10px 16px; }
-    .topbar img { width: 64px; height: 64px; }
+    .topbar img { width: 64px; height: 64px; margin: -15px 0; }
 
     main {
       flex: 1;
@@ -94,6 +94,15 @@
       color: var(--ink);
       margin-top: 2px;
     }
+    .resend {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 14.5px;
+      color: var(--teal);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .resend:hover { color: var(--teal-dark); }
     .pitch {
       font-family: var(--display);
       font-weight: 700;
@@ -269,6 +278,7 @@
     <div class="label">You're in</div>
     <h1 id="headline">Your kit is on the way</h1>
     <p class="email-note">Keep an eye on your email!</p>
+    <a class="resend" href="../Creator%20Launch%20Kit.pdf" download="Creator Launch Kit.pdf">Didn't receive it?</a>
 
     <div class="video-wrap">
       <video id="kit-video" src="https://join.dailypostchallenge.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCRXcrS3d3PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--bfdb4ec9baa38b90acd02ffec7f50ab627c87ec9/LaunchKitVideo.mp4" autoplay muted playsinline preload="auto"></video>
