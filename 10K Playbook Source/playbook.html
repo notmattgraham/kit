@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The 10K Follower Playbook</title>
+<style>
+  @page { size: 8.5in 11in; margin: 0; }
+  :root {
+    --charcoal: #1f2d33; --panel: #2a3c42; --teal: #3d7775; --teal-dark: #2f5e5c;
+    --teal-light: #74bbb7; --ink-soft: #34454c; --ink-muted: #5f7076; --border: #d9e5e6;
+    --off-white: #f7f8f8; --muted-dark: #b0bdc1;
+    --display: 'Futura', 'Futura PT', 'Jost', 'Century Gothic', sans-serif;
+    --body: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: var(--body); color: var(--ink-muted); font-size: 13.5px; line-height: 1.5; }
+
+  .page { width: 8.5in; height: 11in; position: relative; overflow: hidden; padding: 76px 84px 0; page-break-after: always; background: #fff; }
+  .page:last-child { page-break-after: auto; }
+  .page.dark { background: var(--charcoal); color: #dfe7e9; }
+
+  .eyebrow { font-family: var(--display); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+  .dark .eyebrow { color: var(--teal-light); }
+  h1 { font-family: var(--display); font-weight: 700; font-size: 34px; line-height: 1.08; color: var(--charcoal); text-transform: uppercase; letter-spacing: .005em; margin-bottom: 14px; }
+  .lede { font-size: 15px; line-height: 1.5; color: var(--ink-muted); margin-bottom: 22px; }
+  .lede b { color: var(--ink-soft); }
+
+  .label { font-family: var(--display); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--teal); margin: 18px 0 8px; }
+  .dark .label { color: var(--teal-light); }
+  ul.dots { list-style: none; }
+  ul.dots li { position: relative; padding-left: 20px; margin-bottom: 6px; }
+  ul.dots li::before { content: ""; position: absolute; left: 3px; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: var(--teal); }
+  b, strong { color: var(--ink-soft); }
+  .dark b, .dark strong { color: #fff; }
+
+  .callout { background: var(--charcoal); color: #fff; border-radius: 6px; padding: 18px 22px; margin-top: 20px; font-size: 14px; line-height: 1.5; }
+  .callout .label { margin: 0 0 6px; color: var(--teal-light); }
+  .callout b { color: var(--teal-light); }
+
+  .lines .line { border-bottom: 1px solid var(--border); height: 34px; }
+  .fill-label { font-family: var(--display); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--teal); margin-top: 16px; }
+
+  .footer { position: absolute; left: 84px; right: 84px; bottom: 32px; border-top: 1px solid var(--border); padding-top: 13px; display: flex; align-items: center; justify-content: space-between; }
+  .dark .footer { border-top-color: #3b4c52; }
+  .cta { display: inline-block; width: 345px; background: var(--teal); color: #fff; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: .02em; padding: 11px 17px; border-radius: 5px; }
+  .dark .cta { background: var(--teal-light); color: var(--charcoal); }
+  .pnum { font-family: var(--display); font-size: 10px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-soft); width: 200px; }
+  .dark .pnum { color: var(--teal-light); }
+
+  /* cover */
+  .logo { width: 150px; margin-left: -6px; }
+  .cover-title { font-family: var(--display); font-weight: 700; font-size: 66px; line-height: 1.02; color: #fff; text-transform: uppercase; margin: 150px 0 26px; }
+  .cover-title .t { color: var(--teal-light); }
+  .cover-title .n10 { margin-left: -5px; }
+  .cover-sub { font-size: 18px; line-height: 1.45; color: #dfe7e9; max-width: 560px; text-wrap: balance; }
+  .cover-proof { margin-top: 34px; display: flex; gap: 36px; }
+  .cover-proof div { font-family: var(--display); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--teal-light); }
+  .cover-proof span { display: block; font-size: 26px; font-weight: 700; color: #fff; letter-spacing: 0; margin-bottom: 2px; }
+
+  /* equation */
+  .equation { display: flex; align-items: stretch; gap: 8px; margin: 6px 0 20px; }
+  .eq-box { flex: 1; background: var(--off-white); border: 1px solid var(--border); border-radius: 6px; padding: 14px 12px; text-align: center; }
+  .eq-box.result { background: var(--charcoal); border-color: var(--charcoal); }
+  .eq-box .big { font-family: var(--display); font-weight: 700; font-size: 16px; color: var(--charcoal); text-transform: uppercase; line-height: 1.1; }
+  .eq-box.result .big { color: var(--teal-light); }
+  .eq-box .small { font-size: 11.5px; line-height: 1.35; margin-top: 6px; color: var(--ink-muted); }
+  .eq-box.result .small { color: #dfe7e9; }
+  .eq-op { font-family: var(--display); font-weight: 700; font-size: 22px; color: var(--teal); align-self: center; }
+
+  /* rules / numbered rows */
+  .rule { display: flex; gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .rule:last-of-type { border-bottom: 0; }
+  .rule .n { font-family: var(--display); font-weight: 700; font-size: 28px; color: var(--teal-light); width: 34px; line-height: 1; flex: none; }
+  .rule h3 { font-family: var(--display); font-weight: 700; font-size: 16px; color: var(--charcoal); text-transform: uppercase; margin-bottom: 3px; }
+  .rule p { font-size: 13.5px; }
+
+  /* beliefs */
+  .belief { display: grid; grid-template-columns: 210px 1fr; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 9px; }
+  .belief .b { background: var(--charcoal); color: #fff; padding: 13px 16px; font-family: var(--display); font-weight: 700; font-size: 14px; text-transform: uppercase; line-height: 1.2; display: flex; flex-direction: column; justify-content: center; }
+  .belief .b small { display: block; font-weight: 500; font-size: 10px; letter-spacing: .06em; color: var(--teal-light); margin-bottom: 5px; }
+  .belief .t { padding: 12px 16px; font-size: 13px; line-height: 1.45; }
+  .belief .t b { display: block; margin-top: 4px; color: var(--teal); font-family: var(--body); }
+
+  /* item rows with icon */
+  .item { display: flex; gap: 16px; margin-bottom: 16px; }
+  .item svg { flex: none; width: 34px; height: 34px; stroke: var(--teal); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; margin-top: 2px; }
+  .item h3 { font-family: var(--display); font-size: 12px; letter-spacing: .05em; color: var(--teal); text-transform: uppercase; font-weight: 500; margin-bottom: 4px; }
+  .item p { font-size: 13.5px; }
+  .ex { font-family: var(--display); font-weight: 700; font-size: 11.5px; letter-spacing: .02em; color: var(--teal); text-transform: uppercase; margin-top: 5px; }
+
+  /* template card */
+  .template { background: var(--off-white); border: 1px solid var(--border); border-left: 4px solid var(--teal-light); border-radius: 6px; padding: 14px 18px; font-size: 16px; color: var(--charcoal); font-family: var(--display); font-weight: 500; margin: 6px 0 10px; }
+  .template .blank { display: inline-block; border-bottom: 2px solid var(--teal-light); min-width: 96px; }
+
+  /* checkboxes */
+  .check { display: flex; gap: 12px; align-items: center; border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; margin-bottom: 7px; font-family: var(--display); font-size: 12.5px; letter-spacing: .02em; text-transform: uppercase; color: var(--charcoal); }
+  .check i { width: 15px; height: 15px; border: 1.6px solid var(--teal); border-radius: 2px; flex: none; }
+  .check.plain { border: 0; padding: 4px 0; margin: 0; text-transform: none; font-family: var(--body); font-size: 13.5px; letter-spacing: 0; color: var(--ink-muted); }
+
+  /* grid of cards */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .card { border: 1px solid var(--border); border-radius: 6px; padding: 13px 15px; }
+  .card h3 { font-family: var(--display); font-size: 11px; letter-spacing: .05em; color: var(--teal); text-transform: uppercase; font-weight: 500; margin-bottom: 5px; }
+  .card p { font-size: 13px; line-height: 1.45; }
+  .card .q { font-family: var(--display); font-weight: 700; font-size: 14px; color: var(--charcoal); line-height: 1.3; }
+
+  /* tables */
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; line-height: 1.4; }
+  th { font-family: var(--display); font-weight: 500; font-size: 10.5px; letter-spacing: .05em; text-transform: uppercase; color: #fff; background: var(--charcoal); text-align: left; padding: 9px 11px; }
+  td { border-bottom: 1px solid var(--border); padding: 9px 11px; vertical-align: top; }
+  td.k { font-family: var(--display); font-weight: 700; color: var(--charcoal); text-transform: uppercase; font-size: 12px; }
+  .write td { height: 46px; }
+  .adjt td { height: 30px; padding: 0 11px; vertical-align: middle; }
+  .tracker td { height: 44px; padding: 0 10px; vertical-align: middle; }
+  .tracker td.d { font-family: var(--display); font-weight: 700; color: var(--teal); width: 46px; }
+  .tracker th { padding: 8px 10px; }
+
+  /* phases */
+  .phase { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 12px; }
+  .phase-head { background: var(--charcoal); color: #fff; padding: 11px 18px; display: flex; justify-content: space-between; align-items: baseline; }
+  .phase-head .p { font-family: var(--display); font-weight: 700; font-size: 17px; text-transform: uppercase; }
+  .phase-head .p span { color: var(--teal-light); }
+  .phase-head .v { font-family: var(--display); font-size: 11px; letter-spacing: .05em; color: var(--teal-light); text-transform: uppercase; }
+  .phase-body { padding: 11px 18px 12px; font-size: 13px; line-height: 1.45; }
+  .phase-body p { margin-bottom: 5px; }
+  .phase-body p:last-child { margin-bottom: 0; }
+
+  /* workflow timeline */
+  .step { display: grid; grid-template-columns: 82px 1fr; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--border); }
+  .step:last-of-type { border-bottom: 0; }
+  .step .time { font-family: var(--display); font-weight: 700; font-size: 20px; color: var(--teal); line-height: 1.05; }
+  .step .time small { display: block; font-size: 10px; letter-spacing: .06em; font-weight: 500; color: var(--ink-muted); }
+  .step h3 { font-family: var(--display); font-weight: 700; font-size: 14px; color: var(--charcoal); text-transform: uppercase; margin-bottom: 2px; }
+  .step p { font-size: 13px; }
+
+  .adj { display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 4px 0 12px; }
+  .adj-core { background: var(--charcoal); color: #fff; font-family: var(--display); font-weight: 700; font-size: 18px; text-transform: uppercase; padding: 12px 26px; border-radius: 6px; text-align: center; line-height: 1.1; }
+  .adj-core small { display: block; font-weight: 500; font-size: 10px; letter-spacing: .06em; color: var(--teal-light); margin-top: 3px; }
+  .adj-ring { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .adj-ring span { border: 1.5px solid var(--teal-light); color: var(--teal-dark); font-family: var(--display); font-weight: 700; font-size: 12.5px; text-transform: uppercase; padding: 8px 14px; border-radius: 30px; background: var(--off-white); }
+  .adj-svg { display: block; width: 100%; height: auto; margin: 0 0 2px; }
+  .adj-lines line { stroke: var(--teal-light); stroke-width: 1.5; }
+  .adj-nodes rect { fill: var(--off-white); stroke: var(--teal-light); stroke-width: 1.5; }
+  .adj-nodes text { font-family: var(--display); font-weight: 700; font-size: 11.5px; fill: var(--teal-dark); text-anchor: middle; }
+  .adj-center rect { fill: var(--charcoal); }
+  .adj-center text { text-anchor: middle; font-family: var(--display); }
+  .adj-center .c1 { font-weight: 700; font-size: 17px; fill: #fff; }
+  .adj-center .c2 { font-size: 9.5px; letter-spacing: .08em; fill: var(--teal-light); }
+  .intro-box { background: var(--off-white); border: 1px solid var(--border); border-left: 4px solid var(--teal-light); border-radius: 6px; padding: 18px 22px 16px; margin-top: 20px; }
+  .intro-box h2 { font-family: var(--display); font-weight: 700; font-size: 22px; text-transform: uppercase; color: var(--charcoal); margin-bottom: 8px; }
+  .hr-row { display: grid; grid-template-columns: 130px 1fr; column-gap: 16px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .hr-lab b { display: block; font-family: var(--display); font-size: 13.5px; text-transform: uppercase; color: var(--charcoal); }
+  .hr-lab span { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--teal); }
+  .hr-grid { display: grid; grid-template-columns: repeat(25, 1fr); gap: 4px; }
+  .hr-grid i { aspect-ratio: 1; border-radius: 2px; background: var(--border); }
+  .hr-grid i.on { background: var(--teal); }
+  .hr-note { grid-column: 2; font-size: 12px; margin-top: 5px; }
+  .chain { display: flex; align-items: stretch; justify-content: space-between; gap: 6px; }
+  .chain em { align-self: center; }
+  .chain span { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; background: var(--off-white); border: 1px solid var(--border); border-radius: 6px; padding: 10px 6px; font-family: var(--display); font-weight: 700; font-size: 12.5px; text-transform: uppercase; color: var(--charcoal); }
+  .chain span.end { background: var(--charcoal); color: var(--teal-light); border-color: var(--charcoal); }
+  .chain em { font-style: normal; color: var(--teal); font-weight: 700; font-size: 18px; }
+  .deadline { display: inline-block; border: 1.5px solid var(--teal-light); color: var(--teal-light); font-family: var(--display); font-weight: 700; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; padding: 8px 14px; border-radius: 30px; }
+  .cta-page { display: flex; flex-direction: column; justify-content: space-between; padding-bottom: 76px; }
+  .cta-page .logo { align-self: flex-start; }
+  .cta-lines { margin-top: 20px; font-size: 16px; line-height: 1.6; color: #dfe7e9; white-space: nowrap; }
+  .cta-page .ticks div:last-child { margin-bottom: 0; }
+  .cta-big { display: inline-block; background: var(--teal-light); color: var(--charcoal); font-family: var(--display); font-weight: 700; font-size: 17px; padding: 15px 26px; border-radius: 6px; text-decoration: none; margin-top: 26px; }
+  .ticks div { display: flex; align-items: center; gap: 16px; font-weight: 700; color: #fff; font-size: 15px; margin-bottom: 11px; }
+  .ticks i { width: 32px; height: 32px; border-radius: 5px; background: var(--panel); display: flex; align-items: center; justify-content: center; font-style: normal; color: var(--teal-light); font-size: 17px; }
+</style>
+</head>
+<body>
+
+<!-- ============ 1. COVER ============ -->
+<section id="p1" class="page dark">
+  <img class="logo" src="cl.svg" alt="Creator Launchpad">
+  <div class="cover-title">The<br><span class="t n10">10K</span><br>Follower<br>Playbook</div>
+  <p class="cover-sub">The step-by-step system for taking a brand new account from zero to 10,000 followers, from people who've done it more than a dozen times.</p>
+  <div class="cover-proof">
+    <div><span>1.5B+</span>Views generated</div>
+    <div><span>4.5M+</span>Followers built</div>
+    <div><span>12+</span>Accounts grown to 10K</div>
+  </div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">10K FOLLOWER PLAYBOOK / 1</span></div>
+</section>
+
+<!-- ============ 2. THE MATH ============ -->
+<section id="p2" class="page">
+  <div class="eyebrow">00 / Start here</div>
+  <h1>How 10,000 followers actually happens</h1>
+  <p class="lede">Nobody hits 10,000 followers by posting and hoping. It's math. Every follower you'll ever get comes from three numbers multiplied together, and this playbook is built to push all three up at the same time.</p>
+
+  <div class="equation">
+    <div class="eq-box"><div class="big">Videos</div><div class="small">How many shots you take</div></div>
+    <div class="eq-op">×</div>
+    <div class="eq-box"><div class="big">Views per video</div><div class="small">Do they stop and do they stay</div></div>
+    <div class="eq-op">×</div>
+    <div class="eq-box"><div class="big">Follow rate</div><div class="small">How many viewers want more</div></div>
+    <div class="eq-op">=</div>
+    <div class="eq-box result"><div class="big">Followers</div><div class="small">The result, not the goal you chase</div></div>
+  </div>
+
+  <table>
+    <tr><th style="width:150px">Number</th><th>What controls it</th><th style="width:120px">Where you fix it</th></tr>
+    <tr><td class="k">Videos</td><td>How many swings you take. This playbook asks for at least 100. Most people quit around video 10.</td><td>The power of volume, Step 08</td></tr>
+    <tr><td class="k">Views per video</td><td>Your idea, your first three seconds, and whether people watch to the end.</td><td>Steps 04 to 07</td></tr>
+    <tr><td class="k">Follow rate</td><td>Whether someone who liked one video believes the next one will be just as good.</td><td>Steps 01, 02, 03, 09</td></tr>
+  </table>
+
+  <div class="label" style="margin-top:22px">The math, worked out</div>
+  <p>If 5 out of every 1,000 people who watch your videos follow you, 10,000 followers takes about <b>2,000,000 total views.</b> Across 100 videos that's an average of 20,000 views per video.</p>
+  <p style="margin-top:8px">That sounds like a lot until you see how it really goes. Most of your videos will do a few hundred or a few thousand views. Two or three will be outliers and do the heavy lifting. <b>One 500,000-view video is a quarter of the whole job.</b></p>
+
+  <div class="callout"><div class="label">The whole game</div>You don't control which video breaks out. You control how many swings you take, how much better each swing gets, and whether people have a reason to follow when one finally connects.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">START HERE / 2</span></div>
+</section>
+
+<!-- ============ VOLUME ============ -->
+<section id="p3" class="page">
+  <div class="eyebrow">00 / Start here</div>
+  <h1>The power of volume</h1>
+  <p class="lede">If you take one thing from this entire playbook, take this page. <b>Volume beats luck.</b> One video can get unlucky. A hundred videos can't. Every time you post, you get another swing, and organic content gives you unlimited swings for free.</p>
+
+  <div class="label">Two ways onto someone's feed</div>
+  <div class="grid2">
+    <div class="card"><h3>Paid</h3><p class="q">You pay with money.</p><p>Run ads and you buy your placement on people's feeds. Stop paying and you disappear.</p></div>
+    <div class="card" style="background:var(--charcoal);border-color:var(--charcoal)"><h3 style="color:var(--teal-light)">Organic</h3><p class="q" style="color:#fff">You pay with skill.</p><p style="color:#dfe7e9">There's no way to buy organic reach. You earn your spot by getting good. And skill is the one thing nobody can take from you.</p></div>
+  </div>
+
+  <div class="label">How you build skill</div>
+  <div class="template" style="text-align:center;font-size:20px;font-weight:700">Skill = Volume <span style="color:var(--teal)">×</span> Improvement</div>
+  <p style="text-align:center;font-size:12.5px;margin-top:-2px">Times, not plus. If either one is zero, so is your skill.</p>
+
+  <div class="label">Three creators, one year</div>
+  <table>
+    <tr><th style="width:120px">Creator</th><th>What they do</th><th style="width:185px">After one year</th></tr>
+    <tr><td class="k">Creator A</td><td>Posts 3 times a week. Same caliber of video every time, no clear improvements.</td><td>156 videos. Zero real improvements.</td></tr>
+    <tr><td class="k">Creator B</td><td>Posts once a day and tries to make one improvement every day.</td><td>365 videos. 365 improvements. Beats A.</td></tr>
+    <tr style="background:var(--off-white)"><td class="k" style="color:var(--teal)">Creator C</td><td><b>Posts twice a day and gets better in at least two ways every single video.</b></td><td><b>730 videos. 1,460+ improvements. Beats everyone.</b></td></tr>
+  </table>
+  <p style="margin-top:10px">Creator B gets more than twice as many reps as A, and 365 improvements to A's zero. Creator C gets <b>twice as many reps as B</b> and makes <b>four times as many improvements.</b></p>
+
+  <div class="callout"><div class="label">If you do nothing else</div>Post a lot, with a clear intention to get better every single rep. That beats talent, luck, gear, timing, and every hack you'll ever hear about.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">THE POWER OF VOLUME / 3</span></div>
+</section>
+
+<!-- ============ HIT RATE ============ -->
+<section id="p4" class="page">
+  <div class="eyebrow">00 / Start here</div>
+  <h1>Skill and hit rate</h1>
+  <p class="lede">Your <b>hit rate</b> is the percentage of your videos that become outliers. Skill and hit rate are directly correlated. <b>The higher your skill, the fewer videos you have to post to get an outlier.</b> The lower your skill, the more videos it takes.</p>
+
+  <div class="label">Outliers per 50 videos</div>
+  <div class="hr-row"><div class="hr-lab"><b>Low skill</b><span>1 in 50</span></div><div class="hr-grid"><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div><div class="hr-note"><b>10 outliers takes 500 videos.</b> Over a year at one a day.</div></div>
+  <div class="hr-row"><div class="hr-lab"><b>Medium skill</b><span>1 in 10</span></div><div class="hr-grid"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div><div class="hr-note"><b>10 outliers takes 100 videos.</b> About three months at one a day.</div></div>
+  <div class="hr-row"><div class="hr-lab"><b>High skill</b><span>1 in 4</span></div><div class="hr-grid"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i><i class=""></i></div><div class="hr-note"><b>10 outliers takes 40 videos.</b> About six weeks at one a day.</div></div>
+  <p style="font-size:12px;margin-top:4px">Examples to show the idea. Your real numbers will be your own.</p>
+
+  <div class="label">Why growth speeds up</div>
+  <div class="chain"><span>Volume × improvement</span><em>→</em><span>More skill</span><em>→</em><span>Higher hit rate</span><em>→</em><span class="end">Followers come faster</span></div>
+    <p style="margin-top:10px">As your skill goes up, it gets easier to go viral, and your followers grow faster. Early on, you're paying for skill with volume. Every video you post with a clear intention to improve makes the next outlier cheaper.</p>
+  <div class="callout"><div class="label">10,000 is the hard part</div>Getting from 10,000 to 100,000 is easier than getting from 0 to 10,000. By the time you hit 10K, you've already built the skill it takes to reach 100K. From there, it's just a matter of continuing to deploy it.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">SKILL AND HIT RATE / 4</span></div>
+</section>
+
+<!-- ============ 3. THE RULES ============ -->
+<section id="p5" class="page">
+  <div class="eyebrow">00 / Start here</div>
+  <h1>The five rules</h1>
+  <p class="lede">Everything in this playbook sits on top of these. Break one and the rest stops working.</p>
+
+  <div class="rule"><div class="n">1</div><div><h3>One platform</h3><p>Pick TikTok, Instagram Reels, or YouTube Shorts and build there. Pick the one you already scroll the most, because you already know what works on it. You can repost to the others later. You build on one.</p><p style="margin-top:6px"><b>If you want my pick: Instagram.</b> It's the easiest of the three to make money on. Brand deals, DMs that turn into clients, and selling your own offers all happen there more naturally than anywhere else.</p></div></div>
+  <div class="rule"><div class="n">2</div><div><h3>At least one video a day</h3><p>One a day is the floor, not the ceiling. If you can do two to five, do two to five.</p></div></div>
+  <div class="rule"><div class="n">3</div><div><h3>New videos only</h3><p>No reposting the same video to fish for views. Every day is a new idea, a new hook, a new attempt.</p><p style="margin-top:6px"><b>It costs you more than one video.</b> Adam Mosseri, the head of Instagram, has said Instagram ranks original content above reposts, and accounts that keep reposting are less likely to get recommended at all. One lazy repost can drag down the reach of everything you post after it.</p></div></div>
+  <div class="rule"><div class="n">4</div><div><h3>Get better every video</h3><p>Everyone says consistency is the key. Iteration is the key. Posting the same bad video 100 times gets you nowhere. Every video, pick at least one thing to do better than the last one. The people who win pick more than one.</p></div></div>
+  <div class="rule"><div class="n">5</div><div><h3>No verdicts before video 100</h3><p>Your first 30 videos are tuition. You don't get to decide "this isn't working" at video 12. You get to decide at video 100, with real data in front of you.</p></div></div>
+
+  <div class="callout"><div class="label">Proof it works</div>Matt grew from 300 to over 250,000 followers in three months. Joe went from 0 to 11,000 followers in 30 days. Same rules: one platform, a new video every day, better every time.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">THE RULES / 5</span></div>
+</section>
+
+<!-- ============ WIDTH AND DEPTH ============ -->
+<section id="p6" class="page">
+  <div class="eyebrow">00 / Start here</div>
+  <h1>Width and depth</h1>
+  <p class="lede">Building an audience takes two different jobs. <b>Width</b> brings new people into your orbit. <b>Depth</b> turns those people into a real relationship. You'll need both eventually. To get to 10,000 followers, <b>width comes first.</b></p>
+
+  <div class="grid2">
+    <div class="card" style="background:var(--charcoal);border-color:var(--charcoal);padding:18px 20px"><h3 style="color:var(--teal-light)">Width</h3><p class="q" style="color:#fff;font-size:17px;margin-bottom:6px">Cast a wide net.</p><p style="color:#dfe7e9">Get in front of people who have never heard of you. This is what grows your follower count.</p><p style="color:#dfe7e9;margin-top:8px"><b style="color:var(--teal-light)">Best format:</b> short-form video.</p></div>
+    <div class="card" style="padding:18px 20px"><h3>Depth</h3><p class="q" style="font-size:17px;margin-bottom:6px">Deepen the relationship.</p><p>Help the people already in your orbit get to know who you are, so they trust you.</p><p style="margin-top:8px"><b>Best formats:</b> photos, carousels, stories, lives, long-form, replies and DMs.</p></div>
+  </div>
+
+  <div class="label">Where each format fits</div>
+  <table>
+    <tr><th style="width:200px">Format</th><th style="width:120px">Main job</th><th>Why</th></tr>
+    <tr><td class="k">Short-form video</td><td class="k" style="color:var(--teal)">Width</td><td>It's what the apps push hardest to people who don't follow you yet.</td></tr>
+    <tr><td class="k">Photos and carousels</td><td class="k">Depth</td><td>Your followers get more of you: your thinking, your life, your story.</td></tr>
+    <tr><td class="k">Stories and lives</td><td class="k">Depth</td><td>Mostly seen by people who already follow you. That's where trust gets built.</td></tr>
+    <tr><td class="k">Replies and DMs</td><td class="k">Depth</td><td>One-on-one conversations turn followers into fans.</td></tr>
+  </table>
+
+  <div class="label">Why depth matters later</div>
+  <p>Depth is what gets people to take action. Width gets them in the door. Depth gets them to join your email list, buy your product, or show up to your event. Without it, you have an audience that watches but never does anything.</p>
+
+  <div class="callout"><div class="label">For your first 10,000</div>Prioritize width. Your daily video is the non-negotiable. Photos, carousels, and stories are a bonus on top of it, never a replacement for it.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">WIDTH AND DEPTH / 6</span></div>
+</section>
+
+<!-- ============ 4. BELIEFS ============ -->
+<section id="p7" class="page">
+  <div class="eyebrow">00 / Start here</div>
+  <h1>Kill the excuses first</h1>
+  <p class="lede">You don't need to feel ready. You need to stop letting these six thoughts decide for you.</p>
+
+  <div class="belief"><div class="b"><small>Excuse</small>People I know will judge me</div><div class="t">Some will. Look at who's laughing. It's never the people with lives you want. A millionaire doesn't laugh at someone starting their first business. <b>Post it anyway. Their reaction isn't a requirement.</b></div></div>
+  <div class="belief"><div class="b"><small>Excuse</small>I'm not interesting</div><div class="t">Your life feels boring to you because you live it every day. You don't get to decide what a stranger finds interesting. The video does. <b>Make it and let them decide.</b></div></div>
+  <div class="belief"><div class="b"><small>Excuse</small>Nobody will watch</div><div class="t">Good. A small audience is a free lab. You get to experiment while nobody's paying attention and you have no brand to protect. <b>Treat every video as a test, not a verdict.</b></div></div>
+  <div class="belief"><div class="b"><small>Excuse</small>I need better gear</div><div class="t">The phone in your pocket shoots in 4K. Window light, clear audio, a clear point. That's the whole kit. <b>Use what you have.</b></div></div>
+  <div class="belief"><div class="b"><small>Excuse</small>Who am I to talk about this?</div><div class="t">A blue belt can teach a white belt. Someone is stuck on a problem you've already solved. If you haven't solved it yet, document the process. <b>Teach what you've done, or show what you're doing.</b></div></div>
+  <div class="belief"><div class="b"><small>Excuse</small>It's too late. It's too saturated.</div><div class="t">Saturated with mediocre, maybe. A crowded lane means the demand is proven. Nobody can out-compete you at getting better faster. <b>Make a video, then make the next one better.</b></div></div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">START HERE / 7</span></div>
+</section>
+
+<!-- ============ 5. STEP 01 LANE ============ -->
+<section id="p8" class="page">
+  <div class="eyebrow">Step 01 / Positioning</div>
+  <h1>Pick your lane</h1>
+  <p class="lede">You don't have to shrink yourself into a tiny niche. Your content finds the people who are interested in it. What you do need is for people to know what they're signing up for. If your last video was about fitness, the one before was a random meme, and the one before that was your dog, <b>there's no reason to follow.</b></p>
+
+  <div class="label">Write your follow sentence</div>
+  <div class="template" style="font-size:15px">I post videos about <span class="blank"></span> for <span class="blank"></span> so they can <span class="blank"></span>.</div>
+  <ul class="dots" style="margin-top:8px">
+    <li>"I post videos about <b>lifting</b> for <b>busy dads</b> so they can <b>get in shape in 30 minutes a day.</b>"</li>
+    <li>"I post videos about <b>cooking</b> for <b>broke college students</b> so they can <b>eat well on $50 a week.</b>"</li>
+    <li>"I post videos about <b>fitness, business, and discipline</b> for <b>guys in their 20s</b> so they can <b>build a life they're proud of.</b>"</li>
+  </ul>
+
+  <div class="label">Run the lane test (it has to pass all four)</div>
+  <div class="check plain"><i class="cb" style="width:14px;height:14px;border:1.6px solid var(--teal);border-radius:2px;flex:none"></i>I could make 100 videos about this without running out.</div>
+  <div class="check plain"><i style="width:14px;height:14px;border:1.6px solid var(--teal);border-radius:2px;flex:none"></i>I've done it, I'm doing it right now, or I'm obsessed with learning it.</div>
+  <div class="check plain"><i style="width:14px;height:14px;border:1.6px solid var(--teal);border-radius:2px;flex:none"></i>Other creators in this lane are already getting views. (That's proof people want it.)</div>
+  <div class="check plain"><i style="width:14px;height:14px;border:1.6px solid var(--teal);border-radius:2px;flex:none"></i>Someone who watched one of my videos would want ten more.</div>
+
+  <div class="fill-label">My follow sentence</div>
+  <div class="lines"><div class="line"></div><div class="line"></div></div>
+
+  <div class="callout"><div class="label">Your lane is a person, not a topic</div>Pick who you're talking to and what they want. Then you can talk about anything that person cares about. That's the power of adjacent interests, and it's the next page.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">YOUR LANE / 8</span></div>
+</section>
+
+<!-- ============ 5b. ADJACENT INTERESTS ============ -->
+<section id="p9" class="page">
+  <div class="eyebrow">Step 01 / Positioning</div>
+  <h1>The power of adjacent interests</h1>
+  <p class="lede">The person who's interested in one thing is almost always interested in the things next to it. The guy who wants to get in shape usually also wants to make more money, be more disciplined, and have better relationships. <b>You don't have to pick one. You have to pick the person.</b></p>
+
+  <svg class="adj-svg" viewBox="0 0 648 246" xmlns="http://www.w3.org/2000/svg">
+      <g class="adj-lines"><line x1="324.0" y1="123" x2="108" y2="18"/><line x1="324.0" y1="123" x2="252" y2="18"/><line x1="324.0" y1="123" x2="396" y2="18"/><line x1="324.0" y1="123" x2="540" y2="18"/><line x1="324.0" y1="123" x2="556" y2="90"/><line x1="324.0" y1="123" x2="556" y2="156"/><line x1="324.0" y1="123" x2="108" y2="228"/><line x1="324.0" y1="123" x2="252" y2="228"/><line x1="324.0" y1="123" x2="396" y2="228"/><line x1="324.0" y1="123" x2="540" y2="228"/><line x1="324.0" y1="123" x2="92" y2="90"/><line x1="324.0" y1="123" x2="92" y2="156"/></g>
+      <g class="adj-nodes"><g><rect x="68.4" y="5.0" width="79.2" height="26" rx="13"/><text x="108" y="22.2">FITNESS</text></g><g><rect x="208.6" y="5.0" width="86.8" height="26" rx="13"/><text x="252" y="22.2">BUSINESS</text></g><g><rect x="364.0" y="5.0" width="64.0" height="26" rx="13"/><text x="396" y="22.2">MONEY</text></g><g><rect x="492.8" y="5.0" width="94.4" height="26" rx="13"/><text x="540" y="22.2">NUTRITION</text></g><g><rect x="482.2" y="77.0" width="147.6" height="26" rx="13"/><text x="556" y="94.2">CREATING CONTENT</text></g><g><rect x="505.0" y="143.0" width="102.0" height="26" rx="13"/><text x="556" y="160.2">PSYCHOLOGY</text></g><g><rect x="64.6" y="215.0" width="86.8" height="26" rx="13"/><text x="108" y="232.2">RELIGION</text></g><g><rect x="201.0" y="215.0" width="102.0" height="26" rx="13"/><text x="252" y="232.2">PHILOSOPHY</text></g><g><rect x="337.4" y="215.0" width="117.2" height="26" rx="13"/><text x="396" y="232.2">MARTIAL ARTS</text></g><g><rect x="500.4" y="215.0" width="79.2" height="26" rx="13"/><text x="540" y="232.2">HISTORY</text></g><g><rect x="29.6" y="77.0" width="124.8" height="26" rx="13"/><text x="92" y="94.2">RELATIONSHIPS</text></g><g><rect x="10.6" y="143.0" width="162.8" height="26" rx="13"/><text x="92" y="160.2">CULTURE &amp; POLITICS</text></g></g>
+      <g class="adj-center"><rect x="218.0" y="94" width="212" height="58" rx="6"/><text class="c1" x="324.0" y="125">SELF-IMPROVEMENT</text><text class="c2" x="324.0" y="142">CORE PILLAR</text></g>
+    </svg>
+  <p style="text-align:center;font-size:12.5px;margin:0"><b>Core pillar</b> in the middle. Every branch is an <b>adjacent interest</b> the same viewer already cares about.</p>
+
+  <div class="label" style="margin-top:12px">Why it works</div>
+  <ul class="dots">
+    <li><b>You never run out of ideas.</b> Every connected interest is a new well of material.</li>
+    <li><b>Your ceiling gets bigger.</b> A tiny niche caps how many people can ever care.</li>
+    <li><b>People follow people.</b> Show more sides of you and they stop following a topic and start following you.</li>
+  </ul>
+
+  <div class="label" style="margin-top:12px">Map yours</div>
+  <table class="write adjt">
+    <tr><th style="width:150px">Interest</th><th>Topic</th></tr>
+    <tr><td class="k">Core</td><td></td></tr>
+    <tr><td class="k">Adjacent 1</td><td></td></tr>
+    <tr><td class="k">Adjacent 2</td><td></td></tr>
+    <tr><td class="k">Adjacent 3</td><td></td></tr>
+  </table>
+
+  <div class="callout" style="margin-top:14px;padding:14px 20px"><div class="label">Adjacent, not random</div>Would the person who loved my last video care about this one? Fitness to business: yes. Fitness to a random meme: no.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">ADJACENT INTERESTS / 9</span></div>
+</section>
+
+<!-- ============ 6. STEP 02 PROFILE ============ -->
+<section id="p10" class="page">
+  <div class="eyebrow">Step 02 / Positioning</div>
+  <h1>Turn profile visits into follows</h1>
+  <p class="lede">When a video hits, people tap your name and decide in about three seconds whether to follow. Your profile is the sales page. <b>Set it up before video 1.</b></p>
+
+  <div class="grid2">
+    <div class="card"><h3>Name field (optional)</h3><p>Some creators add their lane, like "Sarah Kim | Meal Prep," to show up in search. It's an option. I just use my name.</p></div>
+    <div class="card"><h3>Profile photo</h3><p>Your face, close up, well lit. The same face they just saw in the video, so they know they're in the right place.</p></div>
+  </div>
+
+  <div class="label">Your bio in three lines</div>
+  <div class="grid2">
+    <div>
+      <ul class="dots">
+        <li><b>Line 1:</b> Who it's for and what they get.</li>
+        <li><b>Line 2:</b> Why you. Your proof or your story.</li>
+        <li><b>Line 3:</b> What to expect next.</li>
+      </ul>
+    </div>
+    <div class="template" style="font-size:13.5px;line-height:1.55;margin:0">Helping busy dads get lean in 30 min a day<br>Lost 40 lbs with 3 kids and a 50-hour job<br>New workout every day ↓</div>
+  </div>
+
+  <div class="intro-box">
+    <div class="eyebrow" style="margin-bottom:4px">Do this before video 1</div>
+    <h2>Your intro post</h2>
+    <p>This is one of the most important things you'll post. Make one reel or carousel that explains who you are, what you do, your story, and the context you want people to have, then <b>pin it to the top of your profile.</b> Anyone who lands there should get you at a glance. That's where the relationship starts, and <b>that alone will raise your follow rate.</b></p>
+    <div class="grid2" style="margin-top:12px">
+      <ul class="dots">
+        <li><b>Who you are.</b> Name, age, where you're at in life.</li>
+        <li><b>What you post about.</b> Your core pillar and what's next to it.</li>
+      </ul>
+      <ul class="dots">
+        <li><b>Your story.</b> Where you started and why you're doing this.</li>
+        <li><b>Why follow.</b> What they get if they stick around.</li>
+      </ul>
+    </div>
+    <p style="margin-top:6px;font-size:12.5px">Later, fill the other two pins with your best performer and your most useful video.</p>
+  </div>
+
+  <div class="callout"><div class="label">The five-second test</div>Show your profile to a friend for five seconds, then take the phone back. Ask what you post about and who it's for. If they can't answer, rewrite it.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">YOUR PROFILE / 10</span></div>
+</section>
+
+<!-- ============ 7. STEP 03 SETLIST ============ -->
+<section id="p11" class="page">
+  <div class="eyebrow">Step 03 / Positioning</div>
+  <h1>Build your setlist</h1>
+  <p class="lede">A band doesn't walk on stage and figure out what to play. You shouldn't open your phone and figure out what to post. Your setlist is <b>three pillars</b> you rotate through every week. Your pillars can be your core interest and your adjacent ones.</p>
+
+  <div class="item"><svg viewBox="0 0 34 34"><path d="M4 8c4-2 9-2 13 1v19c-4-3-9-3-13-1z"/><path d="M30 8c-4-2-9-2-13 1v19c4-3 9-3 13-1z"/></svg><div><h3>Pillar type 1 / Teach</h3><p>Show how to do one specific thing. These get saved and shared.</p><div class="ex">Example: 3 meals I prep every Sunday for under $30</div></div></div>
+  <div class="item"><svg viewBox="0 0 34 34"><path d="M5 7h24v15H14l-6 5v-5H5z"/><path d="M11 13h12M11 17h8"/></svg><div><h3>Pillar type 2 / Take</h3><p>Say what you believe that others in your lane don't. These get comments and debates.</p><div class="ex">Example: Stop counting calories. Count this instead.</div></div></div>
+  <div class="item"><svg viewBox="0 0 34 34"><path d="M5 27l8-9 6 5 10-13"/><path d="M22 10h7v7"/></svg><div><h3>Pillar type 3 / Proof</h3><p>Show your journey, your results, your behind the scenes. This is what makes people follow <b>you</b> and not just the information.</p><div class="ex">Example: I cooked every meal at home for a month. Here's what changed.</div></div></div>
+  <div class="label">Example setlist / self-improvement creator</div>
+  <table>
+    <tr><th style="width:120px">Pillar</th><th style="width:170px">Topic</th><th>Example video</th></tr>
+    <tr><td class="k">Teach</td><td>Discipline</td><td>"The 3 rules I use to never miss a workout."</td></tr>
+    <tr><td class="k">Take</td><td>Motivation</td><td>"Motivation is the worst reason to start anything."</td></tr>
+    <tr><td class="k">Proof</td><td>My own journey</td><td>"What a year of waking up at 5 a.m. actually did to me."</td></tr>
+  </table>
+
+  <div class="callout"><div class="label">Rotate them</div>Teach, take, proof, repeat. Each pillar pulls in people for a different reason: saves, comments, and trust. Together they build an audience that knows exactly what they get from you.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">YOUR SETLIST / 11</span></div>
+</section>
+
+<!-- ============ 8. STEP 04 IDEAS ============ -->
+<section id="p12" class="page">
+  <div class="eyebrow">Step 04 / Ideas</div>
+  <h1>Never run out of ideas</h1>
+  <p class="lede">Your best ideas come from your own life, because nobody else can make those videos. You don't need to copy anyone. You need to start paying attention to what's already in front of you.</p>
+
+  <div class="rule"><div class="n">1</div><div><h3>Your experience</h3><p>What you've done, what you've learned, what worked, what didn't. Every lesson you've paid for is a video.</p></div></div>
+  <div class="rule"><div class="n">2</div><div><h3>Your audience</h3><p>Every question in your comments and DMs is a video. So is every question a friend asks you in real life. If one person asks, a thousand are wondering.</p></div></div>
+  <div class="rule"><div class="n">3</div><div><h3>Your adjacent interests</h3><p>Go back to your map. Every branch is a whole new set of ideas, and the same viewer already cares about them.</p></div></div>
+  <div class="rule"><div class="n">4</div><div><h3>What you're learning right now</h3><p>You don't have to be the expert. Document what you're trying, what's working, and what surprised you.</p></div></div>
+
+  <div class="label">More places ideas are hiding</div>
+  <div class="grid2">
+    <div class="card"><p><b>Your mistakes.</b> What you got wrong, what it cost you, and what you do now.</p></div>
+    <div class="card"><p><b>A year ago.</b> What would you tell yourself 12 months ago? That person is your viewer.</p></div>
+    <div class="card"><p><b>What you disagree with.</b> Common advice in your space that you think is wrong, and why.</p></div>
+    <div class="card"><p><b>Your week.</b> Something that happened to you this week that taught you something.</p></div>
+  </div>
+
+  <div class="callout"><div class="label">Before day 1</div>Have <b>30 ideas</b> written down. Every time something happens to you, someone asks you a question, or you change your mind about something, add it. You'll never stare at a blank screen again.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">FINDING IDEAS / 12</span></div>
+</section>
+
+<!-- ============ 8b. FIRST 7 ============ -->
+<section id="p13" class="page">
+  <div class="eyebrow">Step 04 / Ideas</div>
+  <h1>Your first seven videos</h1>
+  <p class="lede">Still don't know what to film tomorrow? Here's your first week. Each one hits a different pillar, so by day 8 you'll already have data on what your audience wants.</p>
+  <table>
+    <tr><th style="width:62px">Day</th><th style="width:205px">The video</th><th>Hook to start from</th></tr>
+    <tr><td class="k">1</td><td><b>Your story.</b> Who you are, where you're starting, where you're going. Pin it right away.</td><td>"I'm [age], I [situation], and I'm going to [goal]. Here's where I'm starting."</td></tr>
+    <tr><td class="k">2</td><td><b>Your biggest mistake</b> in your lane and what you do now.</td><td>"I wasted [time or money] on [mistake]. Don't."</td></tr>
+    <tr><td class="k">3</td><td><b>Teach one thing</b> you know how to do, in under 30 seconds.</td><td>"Here's how to [result] in [short time]."</td></tr>
+    <tr><td class="k">4</td><td><b>Something you're learning</b> right now. Document it.</td><td>"I'm learning [skill] right now. Here's what surprised me."</td></tr>
+    <tr><td class="k">5</td><td><b>Your take.</b> Something everyone in your lane says that you disagree with.</td><td>"Everyone says [common advice]. They're wrong."</td></tr>
+    <tr><td class="k">6</td><td><b>An adjacent interest.</b> Connect your core topic to something next to it.</td><td>"What [core topic] taught me about [adjacent topic]."</td></tr>
+    <tr><td class="k">7</td><td><b>Answer a real question</b> from your comments, a friend, or a bigger creator's comments.</td><td>"Someone asked me [question]. Here's the honest answer."</td></tr>
+  </table>
+  <div class="label" style="margin-top:20px">Then, on day 8</div>
+  <ul class="dots">
+    <li>Rank the seven by views and by follows.</li>
+    <li>Make your next video in the same style as the winner.</li>
+    <li>Then do it again. Week two is the same plan, with more of whatever won.</li>
+  </ul>
+  <div class="callout"><div class="label">Don't overthink week one</div>None of these need to be good. They need to be posted. You're collecting data, not building a portfolio.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">FIRST SEVEN VIDEOS / 13</span></div>
+</section>
+
+<!-- ============ STEP 05 VALUE ============ -->
+<section id="p14" class="page">
+  <div class="eyebrow">Step 05 / Value</div>
+  <h1>The three types of value</h1>
+  <p class="lede">Before you hit record, know what you want the viewer to walk away with. Every video has to check at least one of these three boxes. <b>If it doesn't, it's not worth posting.</b></p>
+
+  <div class="item"><svg viewBox="0 0 34 34"><path d="M4 8c4-2 9-2 13 1v19c-4-3-9-3-13-1z"/><path d="M30 8c-4-2-9-2-13 1v19c4-3 9-3 13-1z"/></svg><div><h3>Education / help them do something</h3><p>Show someone how to do something. Solve a problem or explain something they need to understand.</p><div class="ex">Example: How to burn more calories without working out.</div></div></div>
+  <div class="item"><svg viewBox="0 0 34 34"><circle cx="17" cy="17" r="13"/><path d="M11.5 20c1.4 2 3.3 3 5.5 3s4.1-1 5.5-3"/><circle cx="12.5" cy="13.5" r=".7"/><circle cx="21.5" cy="13.5" r=".7"/></svg><div><h3>Entertainment / make them feel good</h3><p>Make them laugh, smile, or feel happy. Give them something enjoyable to watch.</p><div class="ex">Example: Going to every Chinese buffet until I get food poisoning.</div></div></div>
+  <div class="item"><svg viewBox="0 0 34 34"><path d="M17 29V6M9 13l8-8 8 8"/><path d="M8 29v-6M26 29v-6"/></svg><div><h3>Inspiration / move them to act</h3><p>Share an inspiring story or your transformation. Help them feel ready to take action.</p><div class="ex">Example: A weight loss transformation, and how discipline made it happen.</div></div></div>
+
+  <div class="label">Check at least one box</div>
+  <ul class="dots">
+    <li>A video can educate, entertain, and inspire all at once.</li>
+    <li>Doing all three is hard, but possible.</li>
+    <li>You can check more than one box, but you have to check at least one.</li>
+    <li>If a video delivers none of the three, don't post it.</li>
+  </ul>
+
+  <div class="label">Same topic, three ways</div>
+  <table>
+    <tr><th style="width:150px">Value</th><th>Topic: waking up early</th></tr>
+    <tr><td class="k">Education</td><td>"How I wake up at 5 a.m. without an alarm."</td></tr>
+    <tr><td class="k">Entertainment</td><td>"I tried every viral morning routine for a week."</td></tr>
+    <tr><td class="k">Inspiration</td><td>"What one year of 5 a.m. mornings did to my life."</td></tr>
+  </table>
+
+  <div class="callout"><div class="label">Before every video</div>Ask one question: what does the viewer walk away with? If you can't answer it in one sentence, the video isn't ready.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">THREE TYPES OF VALUE / 14</span></div>
+</section>
+
+<!-- ============ 9. STEP 06 HOOK ============ -->
+<section id="p15" class="page">
+  <div class="eyebrow">Step 06 / Views</div>
+  <h1>Win the first three seconds</h1>
+  <p class="lede">If they swipe in the first three seconds, nothing else you did matters. Every hook has three layers. <b>Use all three in every video.</b></p>
+
+  <div class="grid2" style="grid-template-columns:1fr 1fr 1fr">
+    <div class="card"><h3>What they see</h3><p>Movement or something unexpected in the very first frame. Start mid-action. No walking into frame, no "hey guys."</p></div>
+    <div class="card"><h3>What they hear</h3><p>A first sentence that raises a question they need answered. Specific beats clever.</p></div>
+    <div class="card"><h3>What they read</h3><p>Text on screen in frame one that says what the video is. A lot of people scroll on mute.</p></div>
+  </div>
+
+  <div class="label">Eight hooks you can fill in tonight</div>
+  <table>
+    <tr><td class="k" style="width:28px">1</td><td>"Stop <b>[common habit]</b> if you want <b>[result]</b>."</td><td class="k" style="width:28px">5</td><td>"Here's how to <b>[result]</b> without <b>[thing they hate]</b>."</td></tr>
+    <tr><td class="k">2</td><td>"I <b>[did surprising thing]</b> for <b>[time]</b>. Here's what happened."</td><td class="k">6</td><td>"I was <b>[bad situation]</b> until I figured out <b>[this]</b>."</td></tr>
+    <tr><td class="k">3</td><td>"The reason you <b>[problem]</b> isn't <b>[what they think]</b>."</td><td class="k">7</td><td>"You're <b>[doing common thing]</b> wrong."</td></tr>
+    <tr><td class="k">4</td><td>"<b>[Number]</b> things I wish I knew before <b>[milestone]</b>."</td><td class="k">8</td><td>"This is what <b>[result]</b> actually looks like."</td></tr>
+  </table>
+
+  <div class="label">Hook rules</div>
+  <ul class="dots">
+    <li><b>Be specific.</b> Numbers, names, money, days. "I lost 22 pounds in 90 days" beats "my weight loss journey."</li>
+    <li><b>Make a claim, don't announce one.</b> Cut "what I'm about to tell you will change your life." Just say the thing.</li>
+    <li><b>Attack a belief.</b> Telling people something new is fine. Telling them what they believe is wrong is better.</li>
+    <li><b>The first frame is the thumbnail.</b> If the first frame is boring, the video is boring.</li>
+  </ul>
+
+  <div class="callout"><div class="label">Every video</div>Write three hooks. Read them out loud. Post the one you'd stop scrolling for.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">THE HOOK / 15</span></div>
+</section>
+
+<!-- ============ 10. STEP 07 RETENTION ============ -->
+<section id="p16" class="page">
+  <div class="eyebrow">Step 07 / Views</div>
+  <h1>Hook, retain, reward</h1>
+  <p class="lede">The hook raises a question. The middle builds toward the answer. The ending pays it off. People who watch to the end are the reason the app shows your video to more people.</p>
+
+  <div class="item"><svg viewBox="0 0 34 34"><path d="M12 11a5 5 0 1 1 7 4.6c-1.4.7-2 1.6-2 3.4v1"/><circle cx="17" cy="26" r=".6"/></svg><div><h3>Hook / raise a specific question</h3><p>The first three seconds make them need the answer. How? What happened? What does the other side look like?</p><div class="ex">Example: "Here's how I lost 22 pounds without a gym." The question: how?</div></div></div>
+  <div class="item"><svg viewBox="0 0 34 34"><path d="M3 17s5-9 14-9 14 9 14 9-5 9-14 9S3 17 3 17z"/><circle cx="17" cy="17" r="4"/></svg><div><h3>Retain / build toward the answer</h3><p>Context, a story, or an example that keeps moving them toward the payoff. Where you started, what you tried, what didn't work.</p><div class="ex">Example: "I know this because here's where I was in March."</div></div></div>
+  <div class="item"><svg viewBox="0 0 34 34"><rect x="5" y="13" width="24" height="16" rx="1"/><path d="M3 9h28v4H3zM17 9v20M17 9c-2-5-8-6-8-2s8 2 8 2 8 2 8-2-6-3-8 2"/></svg><div><h3>Reward / deliver the answer</h3><p>The lesson, the reveal, the one change that made the difference. Answer exactly what your hook asked.</p><div class="ex">Example: The one change that caused the 22 pounds.</div></div></div>
+
+  <div class="label">Five retention rules</div>
+  <ul class="dots">
+    <li><b>No intro.</b> Your first sentence is the hook. Your second sentence is already the content.</li>
+    <li><b>Hold the answer.</b> The moment they get what they came for, they leave. Give it at the end.</li>
+    <li><b>Change something every few seconds.</b> A cut, a zoom, a new line of text, a new point.</li>
+    <li><b>Keep it short.</b> Start between 20 and 45 seconds. Earn the right to go longer.</li>
+    <li><b>End on the punch.</b> No "so yeah, that's it." Last line lands, video ends.</li>
+  </ul>
+
+  <div class="label">A full example (about 30 seconds)</div>
+  <table>
+    <tr><td class="k" style="width:90px">Hook</td><td>"I lost 22 pounds this year and I never once set foot in a gym." <span style="color:var(--teal)">On screen: 22 LBS. ZERO GYM.</span></td></tr>
+    <tr><td class="k">Retain</td><td>"In January I was 214 pounds, eating drive-thru twice a day. I tried running. Quit. Tried a meal plan. Quit. Everything I tried needed me to become a different person overnight."</td></tr>
+    <tr><td class="k">Reward</td><td>"What worked was one rule: I don't eat anything I didn't make. Cooking takes long enough that the snacking stopped on its own. 22 pounds."</td></tr>
+    <tr><td class="k">Follow</td><td>"If that helped, follow. I post one of these every day."</td></tr>
+  </table>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">RETENTION / 16</span></div>
+</section>
+
+<!-- ============ 11. STEP 08 WORKFLOW ============ -->
+<section id="p17" class="page">
+  <div class="eyebrow">Step 08 / Production</div>
+  <h1>The 60-minute daily workflow</h1>
+  <p class="lede">You're doing this 100 times. If one video takes four hours, you'll quit by video 15. Here's how to make one in an hour.</p>
+
+  <div class="step"><div class="time">10<small>MIN</small></div><div><h3>Plan</h3><p>Pull an idea from your bank. Write three hooks and pick one. Write the 3 to 5 points you'll hit, or the full script. Never do your thinking on camera.</p></div></div>
+  <div class="step"><div class="time">15<small>MIN</small></div><div><h3>Film</h3><p>Face a window so the light is in front of you. Phone at eye level, lens wiped, quiet room. Look at the lens, not yourself. Record one line at a time if you need to.</p></div></div>
+  <div class="step"><div class="time">25<small>MIN</small></div><div><h3>Edit</h3><p>Cut every pause, breath, and "um." Captions on every word, spelled right. Zoom in on your key lines. Make sure the first frame is the most interesting frame.</p></div></div>
+  <div class="step"><div class="time">5<small>MIN</small></div><div><h3>Watch it once as a stranger</h3><p>Watch it like it just showed up in your feed. The second you get bored or want to swipe, cut that part.</p></div></div>
+  <div class="step"><div class="time">5<small>MIN</small></div><div><h3>Post</h3><p>Write a caption that adds context and uses the words someone would search for. Post. Then stay for the first hour (Step 09).</p></div></div>
+
+  <div class="label">Talking to a camera</div>
+  <ul class="dots">
+    <li>It'll feel awkward. You'll think you sound stupid. Everyone does at first. Post it anyway. It stops feeling weird around video 20.</li>
+    <li>Talk like you're on FaceTime with one friend. Use the words you'd actually say. Skip the presenter voice.</li>
+  </ul>
+
+  <div class="callout"><div class="label">Buy yourself time</div>Film three videos on Sunday and you've already covered Monday and Tuesday. Batching is how people with jobs post every day.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">PRODUCTION / 17</span></div>
+</section>
+
+<!-- ============ 12. STEP 09 FOLLOW ============ -->
+<section id="p18" class="page">
+  <div class="eyebrow">Step 09 / Follow rate</div>
+  <h1>Give them a reason to follow</h1>
+  <p class="lede">A view is a stranger. A follower is someone who wants the next one. Most creators get views and wonder why nobody follows. <b>It's because they never gave anyone a reason.</b></p>
+
+  <div class="label">Four follow triggers</div>
+  <div class="grid2">
+    <div class="card"><h3>Pin your intro post</h3><p>When someone taps your profile, the first thing they see should tell them who you are and why to stick around.</p></div>
+    <div class="card"><h3>Make every video worth it</h3><p>If this video gave them real value, they assume the next one will too. One weak video makes them doubt the follow.</p></div>
+    <div class="card"><h3>Stay in their world</h3><p>Adjacent topics are great. Random ones aren't. A video your person wouldn't care about tells them the next one might not be for them either.</p></div>
+    <div class="card"><h3>Show your personality</h3><p>People follow people. The tips get the view. You get the follow.</p></div>
+  </div>
+
+  <div class="label">Ask the right way</div>
+  <p>"Follow for more" is wallpaper. Nobody hears it anymore. Give a specific reason: <b>"I post one of these every single day."</b> <b>"Follow if you're trying to [result] this year."</b></p>
+
+  <div class="label">The first hour after you post</div>
+  <ul class="dots">
+    <li><b>Reply to every comment.</b> Conversations bring people back to the video and make commenters feel seen.</li>
+    <li><b>Turn good comments into videos.</b> Reply to a comment with a video. It's a free idea, and the commenter will probably share it.</li>
+    <li><b>Spend 15 minutes commenting in your lane.</b> Leave real comments on other creators' videos, not "great video." People click on good commenters.</li>
+  </ul>
+
+  <div class="label">Once you're past 1,000</div>
+  <p>Find 5 creators your size in your lane and make something together: a collab post, a duet, a stitch, a back and forth. Their audience already likes your topic. It's the cheapest growth there is.</p>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">FOLLOW RATE / 18</span></div>
+</section>
+
+<!-- ============ 13. STEP 10 NUMBERS ============ -->
+<section id="p19" class="page">
+  <div class="eyebrow">Step 10 / Iteration</div>
+  <h1>Read your numbers</h1>
+  <p class="lede">Every video is an experiment. The analytics are the results. Check each video <b>48 hours after posting</b> and write down five numbers: views, how many were still watching at 3 seconds, average percent watched, shares, and follows from that video. <b>Where to find them:</b> open the video and tap Analytics on TikTok, or View insights on Instagram.</p>
+
+  <div class="template" style="text-align:center">Follows ÷ Views × 1,000 = <b style="color:var(--teal)">your follow rate</b> (follows per 1,000 views)</div>
+
+  <div class="label">Diagnose any video in ten seconds</div>
+  <table>
+    <tr><th style="width:190px">What you see</th><th style="width:120px">The problem</th><th>The fix</th></tr>
+    <tr><td>Most people swipe in the first 3 seconds</td><td class="k">Hook</td><td>Rewrite the first sentence. Make the first frame move. Add on-screen text. (Step 06)</td></tr>
+    <tr><td>They stay past the hook, then drop off</td><td class="k">Retention</td><td>Cut the intro, hold the payoff until the end, make it shorter. (Step 07)</td></tr>
+    <tr><td>Good watch time, still low views</td><td class="k">Idea</td><td>The topic is too small or not worth sharing. Pick something more people care about, or try an adjacent interest. (Step 04)</td></tr>
+    <tr><td>Lots of views, almost no follows</td><td class="k">Follow rate</td><td>Make it obvious who you're for and pin your intro post. (Steps 01, 02, 09)</td></tr>
+    <tr><td>One outlier, then nothing</td><td class="k">Follow-up</td><td>You didn't double down. Make three more like it this week. (Step 11)</td></tr>
+    <tr><td>Everything is flat, nothing moves</td><td class="k">Volume</td><td>You're not at 30 videos yet, or you skipped days. Post every day.</td></tr>
+  </table>
+
+  <div class="callout"><div class="label">Rough targets</div>Aim for most viewers still watching after 3 seconds and <b>at least 3 to 5 follows per 1,000 views.</b> Below that, your positioning or your profile is the problem, not the algorithm. Compare each video to your own average, never to someone else's account.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">YOUR NUMBERS / 19</span></div>
+</section>
+
+<!-- ============ 14. STEP 11 DOUBLE DOWN ============ -->
+<section id="p20" class="page">
+  <div class="eyebrow">Step 11 / Iteration</div>
+  <h1>Double down on what works</h1>
+  <p class="lede">Most creators get an outlier, celebrate, and go right back to posting whatever. That's the most expensive mistake in this whole playbook. <b>A winner is the audience telling you exactly what to make next.</b></p>
+
+  <div class="label">The outlier rule</div>
+  <p style="margin-bottom:8px">Every outlier earns three follow-ups within seven days:</p>
+  <div class="rule"><div class="n">1</div><div><h3>Follow-up</h3><p>Make a video that answers the most common question in the comments.</p></div></div>
+  <div class="rule"><div class="n">2</div><div><h3>Same format, new topic</h3><p>Keep the structure, the hook style, and the length. Swap the subject.</p></div></div>
+  <div class="rule"><div class="n">3</div><div><h3>Same topic, new hook</h3><p>Say the same thing from a different angle. Winners can win more than once.</p></div></div>
+
+  <div class="label">The five-strike rule</div>
+  <p>If a pillar or format flops five times in a row, even after you fixed the hook, retire it and replace it with something new.</p>
+
+  <div class="label">Weekly review / every Sunday, 20 minutes</div>
+  <div class="fill-label" style="margin-top:6px">My top two videos this week had in common...</div>
+  <div class="lines"><div class="line"></div></div>
+  <div class="fill-label">My bottom two videos this week had in common...</div>
+  <div class="lines"><div class="line"></div></div>
+  <div class="fill-label">The one thing I'm changing this week is...</div>
+  <div class="lines"><div class="line"></div></div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">DOUBLE DOWN / 20</span></div>
+</section>
+
+<!-- ============ 15. THE PLAN ============ -->
+<section id="p21" class="page">
+  <div class="eyebrow">The plan</div>
+  <h1>Zero to 10,000 in three phases</h1>
+  <p class="lede">Each phase has one job and one checkpoint. If you hit the checkpoint, move on. If you don't, the fix is written right there.</p>
+
+  <div class="phase"><div class="phase-head"><div class="p">Phase 1 / <span>0 to 1,000</span></div><div class="v">Videos 1 to 30</div></div>
+    <div class="phase-body"><p><b>The job: reps.</b> Get comfortable on camera, lock in who you're talking to, and post every single day. Don't stare at your follower count. Ask one question: is this video better than the last one?</p><p><b>Checkpoint at video 30:</b> one to three videos clearly beat the rest. <b>If not:</b> your hooks are the problem. Redo Step 06 and pick topics more people care about.</p></div></div>
+
+  <div class="phase"><div class="phase-head"><div class="p">Phase 2 / <span>1,000 to 5,000</span></div><div class="v">Videos 31 to 70</div></div>
+    <div class="phase-body"><p><b>The job: find your format.</b> Apply the outlier rule every time. Retire what's not working. Start commenting and collabing with creators your size.</p><p><b>Checkpoint at video 70:</b> you know which pillar and which format gets you the most follows, and you're making more of it. <b>If views are fine but follows are stuck:</b> Step 01, Step 02, Step 09.</p></div></div>
+
+  <div class="phase"><div class="phase-head"><div class="p">Phase 3 / <span>5,000 to 10,000</span></div><div class="v">Videos 71 to 100+</div></div>
+    <div class="phase-body"><p><b>The job: scale what works.</b> 80% of your videos are formats you've already proven. 20% are experiments. Pin your best three. Collab every week.</p><p><b>Checkpoint at video 100:</b> 10,000 followers, or a clear, written diagnosis of exactly which number is holding you back and what you're doing about it.</p></div></div>
+
+  <div class="callout"><div class="label">The honest part</div>Some people hit 10,000 at video 20. Some hit it at video 150. The phases are a guide, not a deadline. Follow the rules, fix what the numbers tell you to fix, and the only way to lose is to stop.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">THE PLAN / 21</span></div>
+</section>
+
+<!-- ============ 16. CHECKLIST ============ -->
+<section id="p22" class="page">
+  <div class="eyebrow">Use every day</div>
+  <h1>Before you post</h1>
+  <p class="lede">Eleven boxes. Check all of them, then hit post.</p>
+  <div class="check"><i></i>The person I make content for would care about this.</div>
+  <div class="check"><i></i>It educates, entertains, or inspires. At least one.</div>
+  <div class="check"><i></i>The first frame has movement or something worth stopping for.</div>
+  <div class="check"><i></i>The first sentence raises a question they need answered.</div>
+  <div class="check"><i></i>On-screen text in frame one says what the video is.</div>
+  <div class="check"><i></i>There's no intro. The content starts by second 3.</div>
+  <div class="check"><i></i>The payoff is at the end, not the beginning.</div>
+  <div class="check"><i></i>Something changes every few seconds.</div>
+  <div class="check"><i></i>Captions are on and spelled right.</div>
+  <div class="check"><i></i>I watched it as a stranger and cut every boring part.</div>
+  <div class="check"><i></i>There's a reason to follow: it's clear who this account is for.</div>
+
+  <div class="fill-label" style="margin-top:20px">The one thing I'm doing better in this video</div>
+  <div class="lines"><div class="line"></div></div>
+
+  <div class="callout"><div class="label">Then</div>Post it, stay for the first hour, and check the numbers in 48 hours. Tomorrow you do it again.</div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">DAILY CHECKLIST / 22</span></div>
+</section>
+
+<!-- ============ 17. TRACKER ============ -->
+<section id="p23" class="page">
+  <div class="eyebrow">Use every day</div>
+  <h1>Your first 30 days</h1>
+  <p class="lede">Fill in a row every day. Print it, screenshot it, or copy it into your notes. Seeing the streak is half the reason you keep it.</p>
+  <div class="grid2" style="gap:18px">
+    <table class="tracker"><tr><th>Day</th><th>Views</th><th>Follows</th><th>1 change</th></tr>
+      <tr><td class="d">1</td><td></td><td></td><td></td></tr><tr><td class="d">2</td><td></td><td></td><td></td></tr><tr><td class="d">3</td><td></td><td></td><td></td></tr><tr><td class="d">4</td><td></td><td></td><td></td></tr><tr><td class="d">5</td><td></td><td></td><td></td></tr><tr><td class="d">6</td><td></td><td></td><td></td></tr><tr><td class="d">7</td><td></td><td></td><td></td></tr><tr><td class="d">8</td><td></td><td></td><td></td></tr><tr><td class="d">9</td><td></td><td></td><td></td></tr><tr><td class="d">10</td><td></td><td></td><td></td></tr><tr><td class="d">11</td><td></td><td></td><td></td></tr><tr><td class="d">12</td><td></td><td></td><td></td></tr><tr><td class="d">13</td><td></td><td></td><td></td></tr><tr><td class="d">14</td><td></td><td></td><td></td></tr><tr><td class="d">15</td><td></td><td></td><td></td></tr>
+    </table>
+    <table class="tracker"><tr><th>Day</th><th>Views</th><th>Follows</th><th>1 change</th></tr>
+      <tr><td class="d">16</td><td></td><td></td><td></td></tr><tr><td class="d">17</td><td></td><td></td><td></td></tr><tr><td class="d">18</td><td></td><td></td><td></td></tr><tr><td class="d">19</td><td></td><td></td><td></td></tr><tr><td class="d">20</td><td></td><td></td><td></td></tr><tr><td class="d">21</td><td></td><td></td><td></td></tr><tr><td class="d">22</td><td></td><td></td><td></td></tr><tr><td class="d">23</td><td></td><td></td><td></td></tr><tr><td class="d">24</td><td></td><td></td><td></td></tr><tr><td class="d">25</td><td></td><td></td><td></td></tr><tr><td class="d">26</td><td></td><td></td><td></td></tr><tr><td class="d">27</td><td></td><td></td><td></td></tr><tr><td class="d">28</td><td></td><td></td><td></td></tr><tr><td class="d">29</td><td></td><td></td><td></td></tr><tr><td class="d">30</td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+  <div class="footer"><a class="cta" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE &gt;</a><span class="pnum">30-DAY TRACKER / 23</span></div>
+</section>
+
+<!-- ============ 18. CTA ============ -->
+<section id="p24" class="page dark cta-page">
+  <img class="logo" src="cl.svg" alt="Creator Launchpad">
+  <div>
+    <span class="deadline">Join the Fall Challenge before it ends</span>
+    <div class="cover-title" style="font-size:54px;margin:22px 0 0">Don't do<br><span class="t">the first 30<br>days alone.</span></div>
+    <p class="cta-lines">Phase 1 is where everyone quits.<br>The Fall Challenge is Phase 1 with coaches and a community.<br>Join before it ends, or start the hardest part of this playbook alone.</p>
+  </div>
+  <div>
+    <div class="label" style="margin-top:0">The challenge</div>
+    <p style="font-size:15px;color:#dfe7e9">30 days. One channel. One new video every day. $100 to join. Finish and get 110% of it back.</p>
+    <p style="font-size:15px;color:#fff;margin-top:6px"><b style="color:var(--teal-light)">After November 30, it's still $100, but the money-back offer is gone.</b></p>
+  </div>
+  <div>
+    <div class="label" style="margin-top:0">What's included</div>
+    <div class="ticks">
+      <div><i>✓</i>Community of creators posting every day with you</div>
+      <div><i>✓</i>Weekly coaching calls and content feedback calls</div>
+      <div><i>✓</i>Coaches who have built 4.5M+ followers and 1.5B+ views</div>
+      <div><i>✓</i>Courses, templates, trackers, and more</div>
+    </div>
+  </div>
+  <div><a class="cta-big" style="margin-top:0" href="https://notmattgraham.com/30/">START YOUR 30-DAY CHALLENGE TODAY &gt;</a></div>
+</section>
+
+<script>
+/* Spread leftover vertical space evenly between sections so every page fills down to the footer.
+   Re-measures each pass because collapsing margins absorb part of what gets added. */
+(function () {
+  const GAP_TO_FOOTER = 26, MAX_PER_GAP = 44;
+  document.querySelectorAll('section.page:not(.dark)').forEach(page => {
+    const footer = page.querySelector('.footer');
+    const kids = [...page.children].filter(el => el !== footer);
+    const lede = kids.findIndex(el => el.classList.contains('lede'));
+    const targets = kids.slice(lede + 1).filter(el => {
+      const prev = el.previousElementSibling;
+      return !(prev && (prev.classList.contains('label') || prev.classList.contains('fill-label')));
+    });
+    if (!targets.length) return;
+    const base = targets.map(el => parseFloat(getComputedStyle(el).marginTop) || 0);
+    let added = 0;
+    for (let i = 0; i < 8; i++) {
+      const bottom = Math.max(...kids.map(el => el.getBoundingClientRect().bottom));
+      const extra = footer.getBoundingClientRect().top - GAP_TO_FOOTER - bottom;
+      if (Math.abs(extra) < 2) break;
+      added = Math.max(0, Math.min(added + extra / targets.length, MAX_PER_GAP));
+      targets.forEach((el, j) => { el.style.marginTop = (base[j] + added) + 'px'; });
+      if (added === MAX_PER_GAP || added === 0) break;
+    }
+  });
+})();
+</script>
+</body>
+</html>
