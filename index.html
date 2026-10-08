@@ -334,6 +334,32 @@
       .step h2 { margin-bottom: 10px; }
     }
 
+    /* ── IN-PAGE THANK-YOU ──
+       Shown on the same click as the submit, so the video can start with
+       sound. Browsers only allow audio autoplay inside a user gesture. */
+    .ty { max-width: 620px; margin: 0 auto; padding: 48px 16px 64px; text-align: center; }
+    .ty[hidden] { display: none; }
+    .ty-check { width: 64px; height: 64px; border-radius: 50%; background: var(--teal); color: var(--white); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
+    .ty-check svg { width: 30px; height: 30px; }
+    .ty h1 { font-size: clamp(30px, 6vw, 48px); line-height: 1.05; margin: 10px 0 14px; }
+    .ty-email { font-family: var(--display); font-weight: 500; font-size: clamp(18px, 2.6vw, 21px); color: var(--ink); margin-top: 2px; }
+    .ty-resend { display: inline-block; margin-top: 4px; font-size: 14.5px; color: var(--teal); text-decoration: underline; text-underline-offset: 3px; }
+    .ty-resend:hover { color: var(--teal-dark); }
+    .ty-video { position: relative; margin: 22px auto 20px; max-width: 640px; aspect-ratio: 16 / 9; background: var(--charcoal); border-radius: 12px; overflow: hidden; box-shadow: 0 18px 40px rgba(31,45,51,0.18); }
+    .ty-video video { width: 100%; height: 100%; display: block; object-fit: cover; background: var(--charcoal); }
+    .ty-sound { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 8px; font-family: var(--display); font-size: 14px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--charcoal); background: var(--teal-light); border: 0; border-radius: 999px; padding: 10px 18px; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,0.3); white-space: nowrap; }
+    .ty-sound:hover { background: #8ccac6; }
+    .ty-sound svg { width: 18px; height: 18px; }
+    .ty-sound[hidden] { display: none; }
+    .ty-pitch { font-family: var(--display); font-weight: 700; font-size: clamp(20px, 3.4vw, 26px); line-height: 1.25; color: var(--ink); max-width: 520px; margin: 6px auto 0; text-wrap: balance; }
+    .ty .btn { display: inline-flex; width: auto; margin-top: 26px; padding: 16px 26px; white-space: nowrap; }
+    .ty-how { list-style: none; display: grid; width: fit-content; gap: 8px; margin: 22px auto 0; text-align: left; }
+    .ty-how li { display: flex; align-items: baseline; gap: 10px; font-family: var(--display); font-weight: 500; font-size: 18px; color: var(--ink); }
+    .ty-how li::before { content: '✓'; color: var(--teal); font-weight: 700; flex: none; }
+    @media (max-width: 520px) {
+      .ty .btn { width: 100%; padding: 16px 10px; font-size: clamp(12px, 3.9vw, 16px); letter-spacing: 0.02em; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; }
     }
@@ -345,7 +371,7 @@
     <img src="cl.svg" alt="Creator Launchpad" width="64" height="64">
   </header>
 
-  <main>
+  <main id="signup">
     <section class="hero">
       <div class="label">Zero to 10,000 followers</div>
       <h1>Get the free <span class="teal">10K Follower<br class="desk-br"> Playbook</span></h1>
@@ -425,6 +451,32 @@
     </section>
   </main>
 
+  <section class="ty" id="ty" hidden>
+    <div class="ty-check" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="label">You're in</div>
+    <h1 id="ty-headline">Your playbook is on the way</h1>
+    <p class="ty-email">Keep an eye on your email!</p>
+    <a class="ty-resend" href="10K%20Follower%20Playbook.pdf" download="10K Follower Playbook.pdf">Didn't receive it?</a>
+
+    <div class="ty-video">
+      <video id="ty-video" src="https://join.dailypostchallenge.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCRXcrS3d3PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--bfdb4ec9baa38b90acd02ffec7f50ab627c87ec9/LaunchKitVideo.mp4" playsinline preload="none"></video>
+      <button type="button" class="ty-sound" id="ty-sound" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
+        <span id="ty-sound-label">Tap for sound</span>
+      </button>
+    </div>
+
+    <p class="ty-pitch">Now that you have the tools, get the accountability to maximize them.</p>
+    <a class="btn" href="https://notmattgraham.com/30/">Join the challenge &rarr;</a>
+    <ul class="ty-how">
+      <li>One post every day</li>
+      <li>For 30 days</li>
+      <li>Get 110% of your money back</li>
+    </ul>
+  </section>
+
   <footer>
     <img src="cl.svg" alt="Creator Launchpad" width="56" height="56">
     &copy; 2026 Creator Launchpad
@@ -446,12 +498,18 @@
     var errEmail = document.getElementById('err-email');
     var fill = document.getElementById('progress-fill');
     var progressText = document.getElementById('progress-text');
-    var submitBtn = document.getElementById('submit');
 
     // Without JS both fields show and the form still works.
     step2.hidden = true;
 
+    var video = document.getElementById('ty-video');
+    var soundBtn = document.getElementById('ty-sound');
+    var soundLabel = document.getElementById('ty-sound-label');
+
     function showStep(n) {
+      // Start buffering the thank-you video once they reach the email step,
+      // so it can start the instant they submit.
+      if (n === 2 && video.preload !== 'auto') { video.preload = 'auto'; video.load(); }
       step1.hidden = n !== 1;
       step2.hidden = n !== 2;
       fill.style.width = n === 1 ? '50%' : '100%';
@@ -488,22 +546,65 @@
       setTimeout(function () { (step2.hidden ? nameEl : emailEl).focus({ preventScroll: true }); }, 400);
     });
 
+    // Swap the page to the thank-you view and start the video with sound.
+    // This has to run synchronously inside the submit click (or Enter key):
+    // that's the only moment browsers, iPhones included, allow audio autoplay.
+    function showThankYou() {
+      var first = nameEl.value.trim();
+      if (first) document.getElementById('ty-headline').textContent = first + ', your playbook is on the way';
+      // Lets the standalone thank-you page greet them by name if they refresh.
+      try { sessionStorage.setItem('kit_first_name', first); } catch (err) {}
+      document.getElementById('signup').hidden = true;
+      document.getElementById('ty').hidden = false;
+      window.scrollTo(0, 0);
+      try { history.pushState({ ty: true }, '', 'thank-you/'); } catch (err) {}
+
+      video.muted = false;
+      video.controls = true;
+      var p = video.play();
+      if (p && p.catch) {
+        // If a browser still refuses sound, play muted and offer the button.
+        p.catch(function () {
+          video.muted = true;
+          video.controls = false;
+          soundBtn.hidden = false;
+          video.play().catch(function () { soundLabel.textContent = 'Play video'; });
+        });
+      }
+    }
+
+    soundBtn.addEventListener('click', function () {
+      video.muted = false;
+      video.currentTime = 0;
+      video.controls = true;
+      soundBtn.hidden = true;
+      video.play().catch(function () {});
+    });
+
+    // Back button from the thank-you view returns to a fresh landing page.
+    window.addEventListener('popstate', function () { location.reload(); });
+
+    // If MailerLite rejects the email, go back to the form so they can fix it.
+    function backToForm(msg) {
+      video.pause();
+      document.getElementById('ty').hidden = true;
+      document.getElementById('signup').hidden = false;
+      try { history.replaceState(null, '', location.pathname.replace(/thank-you\/?$/, '')); } catch (err) {}
+      showStep(2);
+      errEmail.textContent = msg;
+      emailEl.setAttribute('aria-invalid', 'true');
+      form.scrollIntoView({ block: 'center' });
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (!validName()) { showStep(1); return; }
       if (!validEmail()) return;
 
-      // Personalize the thank-you page without putting anything in the URL.
-      try { sessionStorage.setItem('kit_first_name', nameEl.value.trim()); } catch (err) {}
-
-      function done() { window.location.href = 'thank-you/'; }
-      if (!FORM_ENDPOINT) { done(); return; }
+      showThankYou();
 
       // Bots fill in the hidden "website" field; skip sending for them.
-      if (form.website && form.website.value) { done(); return; }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Sending…';
+      if (!FORM_ENDPOINT || (form.website && form.website.value)) return;
 
       // Same request MailerLite's own embed script sends: a GET with the
       // form fields plus ajax=1 and a visitor guid.
@@ -516,35 +617,14 @@
       data.set('guid', (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
         : 'g' + Date.now().toString(36) + Math.random().toString(36).slice(2));
 
-      function resetButton() {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Send me the playbook &rarr;';
-      }
-
-      // MailerLite answers with JSON. If it rejects the email, show why and
-      // let them fix it. Any other hiccup still sends them to the thank-you
-      // page, which has the instant download, so nobody gets stuck.
-      var finished = false;
-      function finish() { if (!finished) { finished = true; done(); } }
-      var timer = setTimeout(finish, 8000);
-
       fetch(FORM_ENDPOINT + '?' + data.toString(), { method: 'GET' })
         .then(function (res) {
           return res.json().catch(function () { return {}; }).then(function (json) {
-            if (res.ok && json.success !== false) { clearTimeout(timer); finish(); return; }
             var msg = json.errors && json.errors.fields && json.errors.fields.email;
-            if (msg && !finished) {
-              clearTimeout(timer);
-              errEmail.textContent = Array.isArray(msg) ? msg[0] : String(msg);
-              emailEl.setAttribute('aria-invalid', 'true');
-              resetButton();
-              emailEl.focus();
-            } else {
-              clearTimeout(timer); finish();
-            }
+            if (msg) backToForm(Array.isArray(msg) ? msg[0] : String(msg));
           });
         })
-        .catch(function () { clearTimeout(timer); finish(); });
+        .catch(function () {});
     });
   })();
 </script>
