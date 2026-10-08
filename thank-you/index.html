@@ -270,6 +270,95 @@
       .btn { width: 100%; padding: 16px 10px; font-size: clamp(12px, 3.9vw, 16px); letter-spacing: 0.02em; }
       .challenge { padding: 24px 16px; }
     }
+    /* ── CHALLENGE DETAILS (mirrors the main landing page) ── */
+    .ln-band { border-top: 1px solid var(--border); padding: 56px 16px; }
+    .ln-band.alt { background: var(--off-white); }
+    .ln-wrap { max-width: 1040px; margin: 0 auto; }
+    .ln-label { font-family: var(--display); font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); text-align: center; }
+    .ln-h2 { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: clamp(24px, 3.6vw, 34px); line-height: 1.1; color: var(--ink); text-align: center; max-width: 720px; margin: 8px auto 10px; text-wrap: balance; }
+    .ln-sub { font-size: 16px; color: var(--ink-muted); text-align: center; max-width: 560px; margin: 0 auto 32px; }
+
+    .ln-proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    @media (max-width: 900px) { .ln-proof { grid-template-columns: 1fr 1fr; max-width: 620px; margin: 0 auto; } }
+    @media (max-width: 480px) { .ln-proof { grid-template-columns: 1fr; max-width: 340px; } }
+    .ln-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: 0 14px 30px rgba(31,45,51,0.06); text-align: left; cursor: pointer; padding: 0; font: inherit; color: inherit; width: 100%; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .ln-card:hover, .ln-card:focus-visible { transform: translateY(-3px); box-shadow: 0 20px 36px rgba(31,45,51,0.12); outline: none; }
+    .ln-card img { width: 100%; height: 200px; object-fit: contain; background: var(--charcoal); display: block; }
+    .ln-card-body { padding: 14px 16px 16px; }
+    .ln-card-name { font-family: var(--display); font-weight: 700; font-size: 15px; color: var(--ink); }
+    .ln-card-stat { font-size: 13.5px; color: var(--ink-muted); margin-top: 2px; line-height: 1.45; }
+    .ln-card-stat strong { color: var(--teal); }
+    .ln-card-more { font-family: var(--display); font-weight: 600; font-size: 12.5px; color: var(--teal); margin-top: 8px; }
+
+    .ln-rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
+    @media (max-width: 760px) { .ln-rules { grid-template-columns: 1fr; max-width: 460px; } }
+    .ln-rule { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 24px 22px; text-align: left; }
+    .ln-rule-num { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--teal); color: var(--white); font-family: var(--display); font-weight: 700; font-size: 14px; margin-bottom: 14px; }
+    .ln-rule-name { font-family: var(--display); font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 4px; }
+    .ln-rule-desc { font-size: 14.5px; color: var(--ink-muted); }
+
+    .ln-coaches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 780px; margin: 0 auto; }
+    .ln-coach { text-align: center; }
+    .ln-coach img { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; margin: 0 auto 14px; border: 4px solid var(--white); box-shadow: 0 14px 30px rgba(31,45,51,0.16); display: block; }
+    .ln-coach-name { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--ink); }
+    .ln-coach-handle { font-size: 13px; font-weight: 700; color: var(--teal); margin: 2px 0 8px; }
+    .ln-coach-stats { list-style: none; font-size: 14px; color: var(--ink-muted); }
+    .ln-coach-stats strong { color: var(--ink); }
+    .ln-social { display: flex; justify-content: center; gap: 10px; margin-top: 12px; }
+    .ln-social a { width: 34px; height: 34px; border-radius: 50%; background: var(--white); border: 1px solid var(--border); color: var(--ink); display: flex; align-items: center; justify-content: center; transition: background 0.2s ease, color 0.2s ease; }
+    .ln-social a:hover { background: var(--ink); color: var(--white); }
+    .ln-social svg { width: 16px; height: 16px; }
+    @media (max-width: 760px) {
+      .ln-coaches { grid-template-columns: 1fr; max-width: 340px; gap: 22px; }
+      .ln-coach { display: grid; grid-template-columns: 88px 1fr; gap: 0 16px; align-items: center; text-align: left; }
+      .ln-coach img { width: 88px; height: 88px; margin: 0; grid-row: span 4; }
+      .ln-social { justify-content: flex-start; margin-top: 8px; }
+    }
+
+    .ln-values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 960px; margin: 0 auto; }
+    @media (max-width: 900px) { .ln-values { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .ln-values { grid-template-columns: 1fr; } }
+    .ln-value { background: var(--off-white); border: 1px solid var(--border); border-radius: 12px; padding: 22px; text-align: left; }
+    .ln-value-num { width: 38px; height: 38px; border-radius: 10px; background: rgba(61,119,117,0.1); color: var(--teal); display: flex; align-items: center; justify-content: center; font-family: var(--display); font-weight: 700; font-size: 15px; margin-bottom: 12px; }
+    .ln-value-name { font-family: var(--display); font-weight: 700; font-size: 16px; color: var(--ink); }
+    .ln-value-tag { font-family: var(--display); font-weight: 600; font-size: 12.5px; color: var(--teal); margin: 2px 0 8px; }
+    .ln-value-desc { font-size: 14px; color: var(--ink-muted); line-height: 1.55; }
+    .ln-total { max-width: 560px; margin: 28px auto 0; background: var(--charcoal); border-radius: 12px; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .ln-total-label { font-family: var(--display); font-weight: 500; font-size: 15px; color: var(--muted-dark); }
+    .ln-total-amount { font-family: var(--display); font-weight: 800; font-size: 24px; color: var(--teal-light); }
+    .ln-total-amount s { opacity: 0.55; font-weight: 500; font-size: 17px; margin-right: 8px; }
+
+    .ln-buy { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 32px; max-width: 440px; margin: 0 auto; box-shadow: 0 24px 50px rgba(31,45,51,0.08); text-align: center; }
+    .ln-price { display: flex; align-items: baseline; justify-content: center; gap: 10px; padding-bottom: 20px; margin-bottom: 18px; border-bottom: 1px solid var(--border); }
+    .ln-price b { font-family: var(--display); font-weight: 800; font-size: 44px; color: var(--ink); }
+    .ln-price span { font-size: 13.5px; color: var(--ink-muted); }
+    .ln-includes { list-style: none; text-align: left; margin-bottom: 22px; }
+    .ln-includes li { display: flex; gap: 10px; font-size: 14.5px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+    .ln-includes li:last-child { border-bottom: 0; }
+    .ln-includes li::before { content: '✓'; color: var(--teal); font-weight: 700; flex: none; }
+    .ln-cta { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; font-family: var(--display); font-size: 16px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; color: var(--white); background: var(--teal); border-radius: 8px; padding: 16px 20px; transition: background 0.2s ease; }
+    .ln-cta:hover { background: var(--teal-dark); }
+    .ln-cta-inline { display: inline-flex; width: auto; padding: 16px 26px; margin-top: 30px; }
+    .ln-foot { font-size: 13px; color: var(--ink-muted); margin-top: 12px; text-align: center; }
+    @media (max-width: 520px) { .ln-cta-inline { display: flex; width: 100%; } }
+
+    /* Story popup */
+    .ln-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.25s ease, visibility 0s linear 0.25s; }
+    .ln-modal.open { opacity: 1; visibility: visible; pointer-events: auto; transition: opacity 0.25s ease; }
+    .ln-modal-bg { position: absolute; inset: 0; background: rgba(31,45,51,0.72); }
+    .ln-modal-panel { position: relative; background: var(--white); border-radius: 16px; max-width: 560px; width: 100%; max-height: 88vh; overflow-y: auto; box-shadow: 0 30px 70px rgba(0,0,0,0.35); text-align: left; }
+    .ln-modal-close, .ln-modal-next { position: absolute; z-index: 2; border-radius: 50%; background: rgba(31,45,51,0.85); color: var(--white); border: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .ln-modal-close { top: 12px; right: 12px; width: 34px; height: 34px; font-size: 18px; }
+    .ln-modal-next { right: 12px; bottom: 12px; width: 38px; height: 38px; font-size: 17px; }
+    .ln-modal-next[hidden] { display: none; }
+    .ln-modal-media { position: relative; }
+    .ln-modal-imgs { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; background: var(--charcoal); }
+    .ln-modal-imgs img { flex: none; width: 100%; max-height: 380px; object-fit: contain; scroll-snap-align: start; display: block; }
+    .ln-modal-body { padding: 22px 24px 26px; }
+    .ln-modal-name { font-family: var(--display); font-weight: 800; font-size: 20px; color: var(--ink); }
+    .ln-modal-role { font-family: var(--display); font-weight: 500; font-size: 13px; color: var(--ink-muted); margin: 2px 0 12px; }
+    .ln-modal-text { font-size: 15px; line-height: 1.65; color: var(--ink-soft); }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { transition: none !important; }
     }
@@ -299,13 +388,132 @@
     </div>
 
     <p class="pitch">Now that you have the tools, get the accountability to maximize them.</p>
-    <a class="btn" href="https://notmattgraham.com/30/">Join the challenge &rarr;</a>
+    <a class="btn" href="https://join.dailypostchallenge.com/checkout/30-day-posting-challenge">Join the challenge &rarr;</a>
     <ul class="how">
       <li>One post every day</li>
       <li>For 30 days</li>
       <li>Get 110% of your money back</li>
     </ul>
   </main>
+
+  <!-- ── CHALLENGE DETAILS (same content as the main landing page) ── -->
+  <section class="ln-band alt">
+    <div class="ln-wrap">
+      <div class="ln-label">Real results</div>
+      <h2 class="ln-h2">We are already winning</h2>
+      <p class="ln-sub">Real people getting real results.</p>
+      <div class="ln-proof">
+        <button type="button" class="ln-card" data-story="joe">
+          <img src="../images/proof-joe.png" alt="Screenshot of Joe's follower growth: 11,152 followers, +569.0% vs June 5." loading="lazy">
+          <div class="ln-card-body"><div class="ln-card-name">Joe</div><div class="ln-card-stat">Zero to <strong>11,000+ followers</strong> in 30 days</div><div class="ln-card-more">Read the story &rarr;</div></div>
+        </button>
+        <button type="button" class="ln-card" data-story="hailey">
+          <img src="../images/proof-hailey-card.png" alt="Hailey Ky's Instagram profile, ky.frequency: 14.6K followers." loading="lazy">
+          <div class="ln-card-body"><div class="ln-card-name">Hailey Ky</div><div class="ln-card-stat"><strong>300 to 14K+ followers</strong> in 20 days, plus her first product sales</div><div class="ln-card-more">Read the story &rarr;</div></div>
+        </button>
+        <button type="button" class="ln-card" data-story="zach">
+          <img src="../images/proof-zach.jpg" alt="Screenshot of Zach B's Instagram Insights showing 62,447 views." loading="lazy">
+          <div class="ln-card-body"><div class="ln-card-name">Zach B</div><div class="ln-card-stat">Day 2: <strong>62K views</strong>, 87 comments</div><div class="ln-card-more">Read the story &rarr;</div></div>
+        </button>
+        <button type="button" class="ln-card" data-story="coco">
+          <img src="../images/proof-coco.jpg" alt="Screenshot of Coco's Reel insights showing 169,543 views." loading="lazy">
+          <div class="ln-card-body"><div class="ln-card-name">Coco</div><div class="ln-card-stat">Day 1: <strong>169K views</strong> on a 25-second video</div><div class="ln-card-more">Read the story &rarr;</div></div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="ln-band">
+    <div class="ln-wrap">
+      <div class="ln-label">Challenge rules</div>
+      <h2 class="ln-h2">The difference between where you are now and where you want to be is the action you take today.</h2>
+      <p class="ln-sub">Here are the challenge rules:</p>
+      <div class="ln-rules">
+        <div class="ln-rule"><div class="ln-rule-num">01</div><div class="ln-rule-name">You must post 1 video per day</div><div class="ln-rule-desc">Each day you must upload a video. Static posts do not count.</div></div>
+        <div class="ln-rule"><div class="ln-rule-num">02</div><div class="ln-rule-name">1 channel focus</div><div class="ln-rule-desc">You must post daily on a specific channel of your choice.</div></div>
+        <div class="ln-rule"><div class="ln-rule-num">03</div><div class="ln-rule-name">No reposting existing content</div><div class="ln-rule-desc">Every post must be new and original.</div></div>
+      </div>
+      <div style="text-align:center"><a class="ln-cta ln-cta-inline" href="https://join.dailypostchallenge.com/checkout/30-day-posting-challenge">Join the challenge &rarr;</a><p class="ln-foot">Limited to 100 spots per cohort</p></div>
+    </div>
+  </section>
+
+  <section class="ln-band alt">
+    <div class="ln-wrap">
+      <div class="ln-label">Your coaches</div>
+      <h2 class="ln-h2">Meet your coaches</h2>
+      <p class="ln-sub">People who've actually done it, not just talked about it.</p>
+      <div class="ln-coaches">
+        <div class="ln-coach">
+          <img src="../images/coach-matt.jpg" alt="Matt" loading="lazy" width="128" height="128">
+          <div class="ln-coach-name">Matt</div>
+          <div class="ln-coach-handle">@notmattgraham</div>
+          <ul class="ln-coach-stats"><li><strong>1.1M</strong> followers</li><li><strong>1.5B</strong> views</li></ul>
+          <div class="ln-social"><a href="https://instagram.com/notmattgraham" target="_blank" rel="noopener" aria-label="Matt on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg></a><a href="https://tiktok.com/@notmattgraham" target="_blank" rel="noopener" aria-label="Matt on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg></a></div>
+        </div>
+        <div class="ln-coach">
+          <img src="../images/coach-justyn.jpg" alt="Justyn" loading="lazy" width="128" height="128">
+          <div class="ln-coach-name">Justyn</div>
+          <div class="ln-coach-handle">@justyn.ai</div>
+          <ul class="ln-coach-stats"><li><strong>250K</strong> followers</li><li><strong>500+</strong> days in a row of posting</li></ul>
+          <div class="ln-social"><a href="https://instagram.com/justyn.ai" target="_blank" rel="noopener" aria-label="Justyn on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg></a><a href="https://tiktok.com/@justyn.ai" target="_blank" rel="noopener" aria-label="Justyn on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg></a></div>
+        </div>
+        <div class="ln-coach">
+          <img src="../images/coach-joe.jpg" alt="Joe" loading="lazy" width="128" height="128">
+          <div class="ln-coach-name">Joe</div>
+          <div class="ln-coach-handle">@joejitsu.tech</div>
+          <ul class="ln-coach-stats"><li><strong>75K</strong> followers</li><li><strong>0 to 11K</strong> followers in 30 days</li></ul>
+          <div class="ln-social"><a href="https://instagram.com/joejitsu.tech" target="_blank" rel="noopener" aria-label="Joe on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6" fill="currentColor" stroke="none"/></svg></a><a href="https://tiktok.com/@joezapiain" target="_blank" rel="noopener" aria-label="Joe on TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ln-band">
+    <div class="ln-wrap">
+      <div class="ln-label">What you get</div>
+      <h2 class="ln-h2">We help you win</h2>
+      <p class="ln-sub">We give you all the resources you need to win your 30-day challenge.</p>
+      <div class="ln-values">
+        <div class="ln-value"><div class="ln-value-num">01</div><div class="ln-value-name">Weekly Content Call</div><div class="ln-value-tag">($999 value)</div><div class="ln-value-desc">Interactive workshop with unlimited Q&amp;A. I'll keep answering until there are none left!</div></div>
+        <div class="ln-value"><div class="ln-value-num">02</div><div class="ln-value-name">AI Content Hub</div><div class="ln-value-tag">($199 value)</div><div class="ln-value-desc">A fill-in-the-blanks project that becomes your content command center inside ChatGPT.</div></div>
+        <div class="ln-value"><div class="ln-value-num">03</div><div class="ln-value-name">Pull / Drag Audit Custom GPT</div><div class="ln-value-tag">($99 value)</div><div class="ln-value-desc">Diagnose exactly why you haven't been able to stick with creating content every time you've tried.</div></div>
+        <div class="ln-value"><div class="ln-value-num">04</div><div class="ln-value-name">Setlist Creator</div><div class="ln-value-tag">($99 value)</div><div class="ln-value-desc">A template for selecting your core content pillars to create repeatable, winning content.</div></div>
+        <div class="ln-value"><div class="ln-value-num">05</div><div class="ln-value-name">30-in-30 Tracker Template</div><div class="ln-value-tag">($99 value)</div><div class="ln-value-desc">Most leadership programs leave you on your own. We don't. Get ongoing coaching, an engaged community, weekly mastermind calls, and real-time support exactly when you need it most.</div></div>
+        <div class="ln-value"><div class="ln-value-num">06</div><div class="ln-value-name">Content Reposting Automations</div><div class="ln-value-tag">($399 value)</div><div class="ln-value-desc">Automatically repost your content to the other major platforms.</div></div>
+      </div>
+      <div class="ln-total"><span class="ln-total-label">Total bonus value</span><span class="ln-total-amount"><s>$1,894</s>included free</span></div>
+    </div>
+  </section>
+
+  <section class="ln-band alt">
+    <div class="ln-wrap">
+      <h2 class="ln-h2">Ready to commit?</h2>
+      <p class="ln-sub">Only 100 spots per cohort. A new cohort forms <strong>every day</strong>, so join today's.</p>
+      <div class="ln-buy">
+        <div class="ln-price"><b>$100</b><span>entry &middot; 110% back on completion</span></div>
+        <ul class="ln-includes">
+          <li>30-day posting challenge, starts today</li>
+          <li>Weekly Content Call ($999 value)</li>
+          <li>AI Content Hub ($199 value)</li>
+          <li>Pull / Drag Audit Custom GPT ($99 value)</li>
+          <li>Setlist Creator ($99 value)</li>
+          <li>30-in-30 Tracker Template ($99 value)</li>
+          <li>Content Reposting Automations ($399 value)</li>
+        </ul>
+        <a class="ln-cta" href="https://join.dailypostchallenge.com/checkout/30-day-posting-challenge">Join the challenge &rarr;</a>
+        <p class="ln-foot">Limited to 100 spots per challenge.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="ln-modal" id="ln-modal">
+    <div class="ln-modal-bg" data-close></div>
+    <div class="ln-modal-panel" role="dialog" aria-modal="true" aria-labelledby="ln-modal-name">
+      <button type="button" class="ln-modal-close" data-close aria-label="Close">&times;</button>
+      <div class="ln-modal-media"><div class="ln-modal-imgs" id="ln-modal-imgs"></div><button type="button" class="ln-modal-next" id="ln-modal-next" aria-label="Next photo">&rarr;</button></div>
+      <div class="ln-modal-body"><div class="ln-modal-name" id="ln-modal-name"></div><div class="ln-modal-role" id="ln-modal-role"></div><p class="ln-modal-text" id="ln-modal-text"></p></div>
+    </div>
+  </div>
 
   <footer>&copy; 2026 Creator Launchpad</footer>
 
@@ -369,6 +577,46 @@
     video.addEventListener('ended', function () {
       if (video.muted) { label.textContent = 'Watch with sound'; btn.hidden = false; }
     });
+  })();
+</script>
+<script>
+  // Testimonial story popups (same stories as the main landing page).
+  (function () {
+    // Resolve image paths now: on the landing page the address bar moves to
+    // thank-you/ after signup, which would break relative paths.
+    var IMG = new URL('../images/', location.href).href;
+    document.querySelectorAll('.ln-band img').forEach(function (im) { im.src = im.src; });
+    var stories = {
+      joe: { name: 'Joe', role: 'Cohort graduate · full 30-day challenge', images: ['proof-joe.png', 'proof-joe-2.png'],
+        text: "Joe started the challenge with zero real momentum. Thirty days of daily posting later, he'd grown to 11,152 followers (up 569%) and racked up 10,528,900 views on his content. 99.4% of those views came from people who didn't already follow him: proof the work was landing in front of brand-new eyes, every single day." },
+      hailey: { name: 'Hailey Ky', role: 'Nomadic Entrepreneur · Cohort 1', images: ['proof-hailey-profile.png', 'proof-hailey-239k.png', 'proof-hailey.jpg'],
+        text: "Hailey started with about 300 followers on Instagram and videos that averaged 300 to 500 views. Early in the challenge, one of her videos hit 50,000 views, her most popular at the time. Her very next video, posted on day 4, passed 100,000 views and has since climbed to 239,000. In about 20 days she crossed 14,000 followers, launched her first product, and has already made multiple sales. She's officially monetized her brand." },
+      zach: { name: 'Zach B', role: 'I build things · Cohort 2', images: ['proof-zach.jpg'],
+        text: 'Zach told a friend he "sucked at social" and there was no way any of this would work. Two days into the challenge, a single post had pulled 62,447 views, 1,550 viewers, 695 likes, and 87 comments.' },
+      coco: { name: 'Coco', role: 'Intentional Remote Work · Cohort 1', images: ['proof-coco.jpg'],
+        text: "Coco's very first post, a 25-second video on day 1, pulled 169,543 views (157,986 of them on Facebook alone), 2K likes, and 366 total interactions before day 2 even started." }
+    };
+    var modal = document.getElementById('ln-modal');
+    var imgs = document.getElementById('ln-modal-imgs');
+    var next = document.getElementById('ln-modal-next');
+    var count = 1, last = null;
+    function updateNext() { next.hidden = count <= 1 || Math.round(imgs.scrollLeft / imgs.clientWidth) >= count - 1; }
+    imgs.addEventListener('scroll', updateNext);
+    next.addEventListener('click', function () { imgs.scrollLeft = (Math.round(imgs.scrollLeft / imgs.clientWidth) + 1) * imgs.clientWidth; });
+    function open(key) {
+      var s = stories[key]; if (!s) return;
+      imgs.innerHTML = '';
+      s.images.forEach(function (f) { var im = document.createElement('img'); im.src = IMG + f; im.alt = s.name + ' proof screenshot'; imgs.appendChild(im); });
+      count = s.images.length; imgs.scrollLeft = 0; updateNext();
+      document.getElementById('ln-modal-name').textContent = s.name;
+      document.getElementById('ln-modal-role').textContent = s.role;
+      document.getElementById('ln-modal-text').textContent = s.text;
+      last = document.activeElement; modal.classList.add('open'); modal.querySelector('.ln-modal-close').focus();
+    }
+    function close() { modal.classList.remove('open'); if (last) last.focus(); }
+    document.querySelectorAll('[data-story]').forEach(function (c) { c.addEventListener('click', function () { open(c.getAttribute('data-story')); }); });
+    modal.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', close); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
   })();
 </script>
 </body>
