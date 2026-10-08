@@ -256,6 +256,16 @@
 
     .btn { white-space: nowrap; }
     .next strong, .challenge h2, .challenge .label { text-wrap: balance; }
+    /* Phones: pull the video up toward the middle of the screen. */
+    @media (max-width: 600px) {
+      main { padding-top: 18px; }
+      .check { width: 40px; height: 40px; margin-bottom: 10px; }
+      .check svg { width: 20px; height: 20px; }
+      h1 { font-size: 26px; margin: 6px 0 6px; }
+      .email-note { font-size: 16px; }
+      .resend { margin-top: 0; }
+      .video-wrap { margin-top: 14px; }
+    }
     @media (max-width: 520px) {
       .btn { width: 100%; padding: 16px 10px; font-size: clamp(12px, 3.9vw, 16px); letter-spacing: 0.02em; }
       .challenge { padding: 24px 16px; }
@@ -281,7 +291,7 @@
     <a class="resend" href="../10K%20Follower%20Playbook.pdf" download="10K Follower Playbook.pdf">Didn't receive it?</a>
 
     <div class="video-wrap">
-      <video id="kit-video" src="https://join.dailypostchallenge.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCSnFTT1F3PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--5b49c17486ca7bc110289a7591f9f1bfb27e7668/0to10k%20VSL.mp4" autoplay muted playsinline preload="auto"></video>
+      <video id="kit-video" src="https://join.dailypostchallenge.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCQytZT1F3PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--4e29f8b7b8ad36239163680a86f15924c8f273fc/ConfirmationVSL_2.mp4" autoplay muted playsinline preload="auto"></video>
       <button type="button" class="sound-btn" id="sound-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
         <span id="sound-label">Tap for sound</span>
