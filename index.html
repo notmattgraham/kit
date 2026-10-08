@@ -512,6 +512,11 @@
     // Without JS both fields show and the form still works.
     step2.hidden = true;
 
+    // Pin the download link to its full URL now. After submit the address
+    // bar moves to thank-you/, which would break a relative link.
+    var resend = document.querySelector('.ty-resend');
+    resend.href = resend.href;
+
     var video = document.getElementById('ty-video');
     var soundBtn = document.getElementById('ty-sound');
     var soundLabel = document.getElementById('ty-sound-label');
